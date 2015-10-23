@@ -22,6 +22,7 @@ apt-get install -y \
   gcc \
   make \
   openssl \
+  software-properties-common \
   wget \
   nano \
   unzip
