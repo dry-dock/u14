@@ -3,7 +3,7 @@
 locale-gen en_US en_US.UTF-8 && \
 dpkg-reconfigure locales
 
-cd /tmp
+cd /u14
 
 echo "================= Updating package lists ==================="
 apt-get update
@@ -25,7 +25,9 @@ apt-get install -y \
   software-properties-common \
   wget \
   nano \
-  unzip
+  unzip \
+  libxslt-dev \
+  libxml2-dev
 
 echo "================= Installing Python packages ==================="
 apt-get install -y \

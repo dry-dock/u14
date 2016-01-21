@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
 
-ADD . /tmp
+ADD . /u14
 
-RUN /tmp/install.sh && rm -rf /tmp
+RUN /u14/install.sh && rm -rf /tmp
