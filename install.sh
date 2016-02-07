@@ -50,6 +50,15 @@ echo "================= Installing default Java ==================="
 echo "================= Installing default Ruby ==================="
 . ruby/install.sh
 
+echo "================= Adding gclould binaries ============"
+CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo apt-get update && sudo apt-get install google-cloud-sdk
+
+echo "================= Adding awscli ============"
+sudo pip install awscli
+
 echo "================= Cleaning package lists ==================="
 apt-get clean
 apt-get autoclean
