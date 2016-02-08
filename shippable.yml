@@ -16,7 +16,6 @@ build:
 
   ci:
     # We can add sanity checks to ensure the image was built successfully here
-    - echo "Hello, World!"
     - /u14/test/test_lang.sh
 
   on_success:

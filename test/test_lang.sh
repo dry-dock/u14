@@ -1,15 +1,31 @@
-echo "OS information"
+#!/bin/bash -e
+
+echo "================= OS Information ==================="
+printf "\n"
+echo "lsb_release -a"
 lsb_release -a
+printf "\n\n"
 
-echo "java version"
+echo "================= Java Version ==================="
+printf "\n"
+echo "java -version"
 java -version
+printf "\n\n"
 
-echo "python version"
+echo "================= Python Version ==================="
+printf "\n"
+echo "python --version"
 python --version
+printf "\n\n"
 
-echo "node version"
+echo "================= Node Version ==================="
+printf "\n"
+echo "node --version"
 node --version
+printf "\n\n"
 
-echo "ruby versions"
+echo "================= Ruby Versions ==================="
+printf "\n"
+echo "rvm list"
 source /usr/local/rvm/scripts/rvm
 rvm list
