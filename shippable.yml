@@ -21,7 +21,7 @@ build:
     - java -version
     - python --version
     - node --version
-    - source /usr/local/rvm/scripts/rvm
+    - . /usr/local/rvm/scripts/rvm
     - rvm list
 
   on_success:
