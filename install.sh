@@ -32,7 +32,8 @@ apt-get install -y \
 echo "================= Installing Python packages ==================="
 apt-get install -y \
   python-pip \
-  python-software-properties
+  python-software-properties \
+  python-dev
 
 pip install virtualenv
 
