@@ -23,17 +23,22 @@ checkIfTagBuild() {
 }
 
 dockerPush() {
-  echo "Starting Docker push for" $IMAGE_NAME:$IMAGE_TAG
-  sudo docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:tip
-  sudo docker push $IMAGE_NAME:$IMAGE_TAG
-  sudo docker push $IMAGE_NAME:tip
-  if [ "$isGitTag" = true ]; then
+  if [ "$isGitTag" = true ];
+  then
+    echo "Pulling " $IMAGE_NAME:tip
+    sudo docker pull $IMAGE_NAME:tip
     echo "Tagging " $IMAGE_NAME:gitTagName
     echo "Tag Message: " gitTagMessage
-    sudo docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:gitTagName;
+    sudo docker tag $IMAGE_NAME:tip $IMAGE_NAME:gitTagName;
     sudo docker push $IMAGE_NAME:gitTagName
+    echo "Completed Tagging" $IMAGE_NAME:gitTagName
+  else
+    echo "Starting Docker push for" $IMAGE_NAME:$IMAGE_TAG
+    sudo docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:tip
+    sudo docker push $IMAGE_NAME:$IMAGE_TAG
+    sudo docker push $IMAGE_NAME:tip
+    echo "Completed Docker push for" $IMAGE_NAME:$IMAGE_TAG
   fi
-  echo "Completed Docker push for" $IMAGE_NAME:$IMAGE_TAG
 }
 
 dockerLogin() {
