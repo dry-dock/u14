@@ -10,6 +10,7 @@ export RES_MICRO_IMAGE=u14-img
 dockerBuild() {
   echo "Starting Docker build for" $IMAGE_NAME:$IMAGE_TAG
   cd ./IN/$RES_MICRO_REPO/gitRepo
+  ls ./IN/$RES_MICRO_REPO/
   cat ./IN/$RES_MICRO_REPO/version.json
   sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
   echo "Completed Docker build for" $IMAGE_NAME:$IMAGE_TAG
