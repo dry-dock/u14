@@ -2,44 +2,9 @@
 
 export BRANCH=master
 export IMAGE_NAME=drydock/u14
-export IMAGE_TAG=$BRANCH.$BUILD_NUMBER
 export RES_DOCKER_CREDS=docker-creds
 export RES_REPO=u14-repo
 export RES_IMAGE=u14-img
-
-dockerBuild() {
-  echo "Starting Docker build for" $IMAGE_NAME:$IMAGE_TAG
-  cd ./IN/$RES_REPO/gitRepo
-  sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
-  echo "Completed Docker build for" $IMAGE_NAME:$IMAGE_TAG
-}
-
-checkIfTagBuild() {
-  echo "Check Tag Version for" $RES_REPO
-  export isGitTag=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.isGitTag')
-  export gitTagName=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.gitTagName')
-  export gitTagMessage=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.gitTagMessage')
-  echo "Completed for Tag and found : isGitTag: " $isGitTag " and gitTagName: " gitTagName
-}
-
-dockerPush() {
-  if [ "$isGitTag" = true ];
-  then
-    echo "Pulling " $IMAGE_NAME:tip
-    sudo docker pull $IMAGE_NAME:tip
-    echo "Tagging " $IMAGE_NAME:gitTagName
-    echo "Tag Message: " gitTagMessage
-    sudo docker tag $IMAGE_NAME:tip $IMAGE_NAME:gitTagName;
-    sudo docker push $IMAGE_NAME:gitTagName
-    echo "Completed Tagging" $IMAGE_NAME:gitTagName
-  else
-    echo "Starting Docker push for" $IMAGE_NAME:$IMAGE_TAG
-    sudo docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:tip
-    sudo docker push $IMAGE_NAME:$IMAGE_TAG
-    sudo docker push $IMAGE_NAME:tip
-    echo "Completed Docker push for" $IMAGE_NAME:$IMAGE_TAG
-  fi
-}
 
 dockerLogin() {
   echo "Extracting docker creds"
@@ -49,17 +14,62 @@ dockerLogin() {
   echo "Completed Docker login"
 }
 
+checkIfTagBuild() {
+  echo "Check Tag Version for" $RES_REPO
+  export IS_GIT_TAG=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.isGitTag')
+
+  if [ "$IS_GIT_TAG" = true ]; then
+    echo "This is a TAG build"
+    export GIT_TAG=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.gitTagName')
+    export GIT_TAG_MSG=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.gitTagMessage')
+    echo "Tag Name: " $GIT_TAG
+    echo "Tag Message: " $GIT_TAG_MSG
+  fi
+  echo "Completed check for Tag, GIT_TAG: " $GIT_TAG
+}
+
+createImage() {
+  if [ "$IS_GIT_TAG" = true ]; then
+    echo "Pulling " $IMAGE_NAME:tip
+    sudo docker pull $IMAGE_NAME:tip
+    sudo docker tag $IMAGE_NAME:tip $IMAGE_NAME:$GIT_TAG
+    #sudo docker tag $IMAGE_NAME:tip $IMAGE_NAME:prod
+  else
+    echo "Starting Docker build for" $IMAGE_NAME:tip
+    cd ./IN/$RES_REPO/gitRepo
+    sudo docker build -t=$IMAGE_NAME:tip .
+    echo "Completed Docker build for" $IMAGE_NAME:$GIT_TAG
+  fi
+}
+
+dockerPush() {
+  if [ "$IS_GIT_TAG" = true ];
+  then
+    echo "Pushing Tag " $IMAGE_NAME:prod
+    sudo docker push -f $IMAGE_NAME:$GIT_TAG
+    #sudo docker push -f $IMAGE_NAME:prod
+    echo "Completed Pushing Tag" $IMAGE_NAME:prod
+  else
+    echo "Pushing Tag " $IMAGE_NAME:tip
+    sudo docker push -f $IMAGE_NAME:tip
+    echo "Completed Pushing Tag" $IMAGE_NAME:tip
+  fi
+}
+
 createOutState() {
-  echo "Creating a state file for" $RES_IMAGE
-  echo versionName=$IMAGE_TAG > /build/state/$RES_IMAGE.env
-  cat /build/state/$RES_IMAGE.env
-  echo "Completed creating a state file for" $RES_IMAGE
+  # this is to make sure we don't trigger if tag build happens
+  if [ "$IS_GIT_TAG" != true ]; then
+    echo "Creating a state file for" $RES_IMAGE
+    echo versionName=tip > /build/state/$RES_IMAGE.env
+    cat /build/state/$RES_IMAGE.env
+    echo "Completed creating a state file for" $RES_IMAGE
+  fi
 }
 
 main() {
   dockerLogin
-  dockerBuild
   checkIfTagBuild
+  createImage
   dockerPush
   createOutState
 }
