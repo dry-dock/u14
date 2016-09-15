@@ -58,9 +58,9 @@ dockerPush() {
 
 createOutState() {
   # this is to make sure we don't trigger if tag build happens
-  if [ "$IS_GIT_TAG" != true ]; then
+  if [ "$IS_GIT_TAG" = true ]; then
     echo "Creating a state file for" $RES_IMAGE
-    echo versionName=tip > /build/state/$RES_IMAGE.env
+    echo versionName=$GIT_TAG > /build/state/$RES_IMAGE.env
     cat /build/state/$RES_IMAGE.env
     echo "Completed creating a state file for" $RES_IMAGE
   fi
