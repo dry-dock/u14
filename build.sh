@@ -32,8 +32,8 @@ createImage() {
   if [ "$IS_GIT_TAG" = true ]; then
     echo "Pulling " $IMAGE_NAME:tip
     sudo docker pull $IMAGE_NAME:tip
-    sudo docker tag $IMAGE_NAME:tip $IMAGE_NAME:$GIT_TAG
-    #sudo docker tag $IMAGE_NAME:tip $IMAGE_NAME:prod
+    sudo docker tag -f $IMAGE_NAME:tip $IMAGE_NAME:$GIT_TAG
+    #sudo docker tag -f $IMAGE_NAME:tip $IMAGE_NAME:prod
   else
     echo "Starting Docker build for" $IMAGE_NAME:tip
     cd ./IN/$RES_REPO/gitRepo
@@ -46,12 +46,12 @@ dockerPush() {
   if [ "$IS_GIT_TAG" = true ];
   then
     echo "Pushing Tag " $IMAGE_NAME:prod
-    sudo docker push -f $IMAGE_NAME:$GIT_TAG
+    sudo docker push $IMAGE_NAME:$GIT_TAG
     #sudo docker push -f $IMAGE_NAME:prod
     echo "Completed Pushing Tag" $IMAGE_NAME:prod
   else
     echo "Pushing Tag " $IMAGE_NAME:tip
-    sudo docker push -f $IMAGE_NAME:tip
+    sudo docker push $IMAGE_NAME:tip
     echo "Completed Pushing Tag" $IMAGE_NAME:tip
   fi
 }
