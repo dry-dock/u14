@@ -64,3 +64,8 @@ echo "================= Cleaning package lists ==================="
 apt-get clean
 apt-get autoclean
 apt-get autoremove
+
+echo "================= adding jfrog-cli ==================="
+wget -v https://api.bintray.com/content/jfrog/jfrog-cli-go/1.4.1/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+sudo chmod +x jfrog
+mv jfrog ../usr/bin/jfrog
