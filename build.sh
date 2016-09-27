@@ -38,7 +38,7 @@ createImage() {
     echo "Starting Docker build for" $IMAGE_NAME:tip
     cd ./IN/$RES_REPO/gitRepo
     sudo docker build -t=$IMAGE_NAME:tip .
-    echo "Completed Docker build for" $IMAGE_NAME:$GIT_TAG
+    echo "Completed Docker build for" $IMAGE_NAME:tip
   fi
 }
 
