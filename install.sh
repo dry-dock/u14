@@ -67,9 +67,5 @@ mv jfrog /usr/bin/jfrog
 
 echo "================= Cleaning package lists ==================="
 apt-get clean
-mv /var/lib/apt/lists /tmp
-mkdir -p /var/lib/apt/lists/partial
-apt-get clean
 apt-get autoclean
 apt-get autoremove
-apt-get update
