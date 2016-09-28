@@ -29,3 +29,13 @@ printf "\n"
 echo "rvm list"
 source /usr/local/rvm/scripts/rvm
 rvm list
+
+echo "================= awscli Versions ==================="
+printf "\n"
+echo "aws --version"
+aws --version
+
+echo "================= JFrog CLI Versions ==================="
+printf "\n"
+echo "jfrog --version"
+jfrog --version
