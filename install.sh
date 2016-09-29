@@ -42,7 +42,7 @@ add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install -y git
 
-echo "================= Installing Node 6.7.0 ==================="
+echo "================= Installing Node 4.x ==================="
 . node/install.sh
 
 echo "================= Installing Java 1.8.0 ==================="
