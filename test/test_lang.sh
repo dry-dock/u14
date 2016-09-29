@@ -32,8 +32,8 @@ rvm list
 
 echo "================= gclould Versions ==================="
 printf "\n"
-echo "aws --version"
-gcloud -version
+echo "gcloud version"
+gcloud version
 
 echo "================= awscli Versions ==================="
 printf "\n"

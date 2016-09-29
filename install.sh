@@ -51,7 +51,7 @@ echo "================= Installing Java 1.8.0 ==================="
 echo "================= Installing Ruby 2.3.1 ==================="
 . ruby/install.sh
 
-echo "================= Adding gclould ============"
+echo "================= Adding gclould 128.0.0 ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
