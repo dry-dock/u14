@@ -40,6 +40,11 @@ printf "\n"
 echo "aws --version"
 aws --version
 
+echo "================= awsebcli Versions ==================="
+printf "\n"
+echo "eb --version"
+eb --version
+
 echo "================= JFrog CLI Versions ==================="
 printf "\n"
 echo "jfrog --version"

@@ -60,6 +60,9 @@ sudo apt-get update && sudo apt-get install google-cloud-sdk
 echo "================= Adding awscli 1.10.67 ============"
 sudo pip install 'awscli==1.10.67'
 
+echo "================= Adding awsebcli 3.7.8 ============"
+sudo pip install 'awsebcli==3.7.8'
+
 echo "================= Adding jfrog-cli 1.4.1 ==================="
 wget -v https://api.bintray.com/content/jfrog/jfrog-cli-go/1.4.1/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
