@@ -10,6 +10,7 @@ apt-get update
 apt-get install -y openjdk-8-jdk
 update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+apt-get install --reinstall ca-certificates
 add-apt-repository ppa:maarten-fonville/ppa
 apt-get update
 apt-get install icedtea-8-plugin

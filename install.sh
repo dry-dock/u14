@@ -22,18 +22,18 @@ mv 90forceyes /etc/apt/apt.conf.d/
 
 echo "================= Installing basic packages ==================="
 apt-get install -y \
-  sudo  \
-  build-essential \
-  curl \
-  gcc \
-  make \
-  openssl \
-  software-properties-common \
-  wget \
-  nano \
-  unzip \
-  libxslt-dev \
-  libxml2-dev
+sudo  \
+build-essential \
+curl \
+gcc \
+make \
+openssl \
+software-properties-common \
+wget \
+nano \
+unzip \
+libxslt-dev \
+libxml2-dev
 
 echo "================= Installing Python packages ==================="
 apt-get install -y \
@@ -41,6 +41,8 @@ apt-get install -y \
   python-software-properties \
   python-dev
 
+#update pip version
+python -m pip install -U pip
 pip install virtualenv
 
 echo "================= Installing Git ==================="
@@ -49,19 +51,22 @@ apt-get update
 apt-get install -y git
 
 echo "================= Installing Node 7.x ==================="
-. /u16/node/install.sh
+. /u14/node/install.sh
 
 echo "================= Installing Java 1.8.0 ==================="
-. /u16/java/install.sh
+. /u14/java/install.sh
 
 echo "================= Installing Ruby 2.3.3 ==================="
-. /u16/ruby/install.sh
+. /u14/ruby/install.sh
 
 echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-get update && sudo apt-get install google-cloud-sdk
+
+echo "================= Adding JQ 1.5.1 ==================="
+apt-get install jq
 
 echo "================= Adding awscli 1.11.44 ============"
 sudo pip install 'awscli==1.11.44'
