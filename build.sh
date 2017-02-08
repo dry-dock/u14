@@ -1,76 +1,52 @@
 #!/bin/bash -e
 
-export BRANCH=master
-export IMAGE_NAME=drydock/u14
-export RES_DOCKER_CREDS=docker-creds
-export RES_REPO=u14-repo
-export RES_IMAGE=u14-img
+export DOCKERHUB_ORG="drydock"
+export IMAGE_NAME="u14"
+export IMAGE_TAG="tip"
 
-dockerLogin() {
-  echo "Extracting docker creds"
-  . ./IN/$RES_DOCKER_CREDS/integration.env
-  echo "logging into Docker with username" $username
-  docker login -u $username -p $password -e $email
-  echo "Completed Docker login"
-}
+export RES_DOCKERHUB_INTEGRATION="docker-creds"
+export RES_REPO="u14-repo"
+export OUT_IMAGE="u14-img"
 
-checkIfTagBuild() {
-  echo "Check Tag Version for" $RES_REPO
-  export IS_GIT_TAG=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.isGitTag')
+# get dockerhub EN string
+export RES_DOCKERHUB_INTEGRATION_UP=$(echo ${RES_DOCKERHUB_INTEGRATION//-/} | awk '{print toupper($0)}')
+export DH_STRING=$RES_DOCKERHUB_INTEGRATION_UP"_INTEGRATION"
 
-  if [ "$IS_GIT_TAG" = true ]; then
-    echo "This is a TAG build"
-    export GIT_TAG=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.gitTagName')
-    export GIT_TAG_MSG=$(cat ./IN/$RES_REPO/version.json | jq -r '.version.propertyBag.shaData.gitTagMessage')
-    echo "Tag Name: " $GIT_TAG
-    echo "Tag Message: " $GIT_TAG_MSG
-  fi
-  echo "Completed check for Tag, GIT_TAG: " $GIT_TAG
+# since resources here have dashes Shippable replaces them and UPPER cases them
+export RES_REPO_UP=$(echo ${RES_REPO//-/} | awk '{print toupper($0)}')
+export RES_REPO_UP_PATH=$RES_REPO_UP"_PATH"
+
+dockerhubLogin() {
+  echo "Logging in to Dockerhub"
+  echo "----------------------------------------------"
+  sudo docker login -u $DH_USERNAME -p $DH_PASSWORD -e $DH_EMAIL
 }
 
 createImage() {
-  if [ "$IS_GIT_TAG" = true ]; then
-    echo "Pulling " $IMAGE_NAME:tip
-    sudo docker pull $IMAGE_NAME:tip
-    sudo docker tag -f $IMAGE_NAME:tip $IMAGE_NAME:$GIT_TAG
-    #sudo docker tag -f $IMAGE_NAME:tip $IMAGE_NAME:prod
-  else
-    echo "Starting Docker build for" $IMAGE_NAME:tip
-    cd ./IN/$RES_REPO/gitRepo
-    sudo docker build -t=$IMAGE_NAME:tip .
-    echo "Completed Docker build for" $IMAGE_NAME:tip
-  fi
-}
+  BLD_IMG=$DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG
 
-dockerPush() {
-  if [ "$IS_GIT_TAG" = true ];
-  then
-    echo "Pushing Tag " $IMAGE_NAME:prod
-    sudo docker push $IMAGE_NAME:$GIT_TAG
-    #sudo docker push -f $IMAGE_NAME:prod
-    echo "Completed Pushing Tag" $IMAGE_NAME:prod
-  else
-    echo "Pushing Tag " $IMAGE_NAME:tip
-    sudo docker push $IMAGE_NAME:tip
-    echo "Completed Pushing Tag" $IMAGE_NAME:tip
-  fi
+  pushd $(eval echo "$"$RES_REPO_UP_PATH"/gitRepo")
+
+  echo "Starting Docker build & push for $BLD_IMG"
+  sudo docker build -t=$BLD_IMG .
+  echo "Pushing $BLD_IMG"
+  sudo docker push $BLD_IMG
+  echo "Completed Docker build &  push for $BLD_IMG"
+
+  popd
+
 }
 
 createOutState() {
-  # this is to make sure we don't trigger if tag build happens
-  if [ "$IS_GIT_TAG" = true ]; then
-    echo "Creating a state file for" $RES_IMAGE
-    echo versionName=$GIT_TAG > /build/state/$RES_IMAGE.env
-    cat /build/state/$RES_IMAGE.env
-    echo "Completed creating a state file for" $RES_IMAGE
-  fi
+  echo "Creating a state file for $OUT_IMAGE"
+  echo versionName=$BLD_IMG > /build/state/$OUT_IMAGE.env
+  cat /build/state/$OUT_IMAGE.env
+  echo "Completed creating a state file for $OUT_IMAGE"
 }
 
 main() {
-  dockerLogin
-  checkIfTagBuild
+  dockerhubLogin
   createImage
-  dockerPush
   createOutState
 }
 
