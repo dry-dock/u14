@@ -65,6 +65,9 @@ echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee 
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-get update && sudo apt-get install google-cloud-sdk
 
+echo "================= Adding JQ 1.5.1 ==================="
+apt-get install jq
+
 echo "================= Adding awscli 1.11.44 ============"
 sudo pip install 'awscli==1.11.44'
 
