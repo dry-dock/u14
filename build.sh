@@ -16,6 +16,16 @@ export DH_STRING=$RES_DOCKERHUB_INTEGRATION_UP"_INTEGRATION"
 export RES_REPO_UP=$(echo ${RES_REPO//-/} | awk '{print toupper($0)}')
 export RES_REPO_UP_PATH=$RES_REPO_UP"_PATH"
 
+set_context() {
+  export DH_USERNAME=$(eval echo "$"$DH_STRING"_USERNAME")
+  export DH_PASSWORD=$(eval echo "$"$DH_STRING"_PASSWORD")
+  export DH_EMAIL=$(eval echo "$"$DH_STRING"_EMAIL")
+
+  echo "DH_USERNAME=$DH_USERNAME"
+  echo "DH_PASSWORD=${#DH_PASSWORD}" #show only count
+  echo "DH_EMAIL=$DH_EMAIL"
+}
+
 dockerhubLogin() {
   echo "Logging in to Dockerhub"
   echo "----------------------------------------------"
