@@ -45,6 +45,21 @@ printf "\n"
 echo "eb --version"
 eb --version
 
+echo "================= Terraform Versions ==================="
+printf "\n"
+echo "Terraform --version"
+terraform --version
+
+echo "================= Packer Versions ==================="
+printf "\n"
+echo "Packer --version"
+packer --version
+
+echo "================= JQ Versions ==================="
+printf "\n"
+echo "jq --version"
+jq --version
+
 echo "================= JFrog CLI Versions ==================="
 printf "\n"
 echo "jfrog --version"
