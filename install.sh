@@ -33,8 +33,7 @@ apt-get install -y \
     libxslt-dev \
     libxml2-dev \
     htop \
-    texinfo \
-    g++-4.9 \
+    texinfo
 
 echo "================= Installing Python packages ==================="
 apt-get install -y \
