@@ -89,13 +89,14 @@ mv jfrog /usr/bin/jfrog
 
 echo "================ Adding terraform-0.8.7===================="
 export TF_VERSION=0.8.7
+export TF_FILE=terraform_"$TF_VERSION"_linux_amd64.zip
 
 echo "Fetching terraform"
 echo "-----------------------------------"
 rm -rf /tmp/terraform
 mkdir -p /tmp/terraform
-wget -q https://releases.hashicorp.com/terraform/$TF_VERSION/terraform_"$TF_VERSION"_linux_amd64.zip
-unzip -o terraform_"$TF_VERSION"_linux_386.zip -d /tmp/terraform
+wget -q https://releases.hashicorp.com/terraform/$TF_VERSION/$TF_FILE
+unzip -o $TF_FILE -d /tmp/terraform
 sudo chmod +x /tmp/terraform/terraform
 mv /tmp/terraform/terraform /usr/bin/terraform
 
@@ -104,13 +105,14 @@ echo "-----------------------------------"
 
 echo "================ Adding packer 0.12.2 ===================="
 export PK_VERSION=0.12.2
+export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 
 echo "Fetching packer"
 echo "-----------------------------------"
 rm -rf /tmp/packer
 mkdir -p /tmp/packer
-wget -q https://releases.hashicorp.com/packer/$PK_VERSION/packer_"$PK_VERSION"_linux_amd64.zip
-unzip -o $PK_FILENAME -d /tmp/packer
+wget -q https://releases.hashicorp.com/packer/$PK_VERSION/$PK_FILE
+unzip -o $PK_FILE -d /tmp/packer
 sudo chmod +x /tmp/packer/packer
 mv /tmp/packer/packer /usr/bin/packer
 
