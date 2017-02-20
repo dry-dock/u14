@@ -33,6 +33,7 @@ apt-get install -y \
     libxslt-dev \
     libxml2-dev \
     htop \
+    gettext \
     texinfo
 
 echo "================= Installing Python packages ==================="
@@ -86,34 +87,33 @@ wget -v https://api.bintray.com/content/jfrog/jfrog-cli-go/1.7.0/jfrog-cli-linux
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
-echo "================ Adding terraform-0.8.6===================="
-export TF_INSALL_LOCATION=/opt
-export TF_VERSION=0.8.6
+echo "================ Adding terraform-0.8.7===================="
+export TF_VERSION=0.8.7
 
 echo "Fetching terraform"
 echo "-----------------------------------"
-rm -rf $TF_INSALL_LOCATION/terraform
-mkdir -p $TF_INSALL_LOCATION/terraform
-wget -q https://releases.hashicorp.com/terraform/$TF_VERSION/terraform_"$TF_VERSION"_linux_386.zip
-unzip -o terraform_"$TF_VERSION"_linux_386.zip -d $TF_INSALL_LOCATION/terraform
-echo "export PATH=$PATH:$TF_INSALL_LOCATION/terraform" >> ~/.bashrc
-export PATH=$PATH:$TF_INSALL_LOCATION/terraform
+rm -rf /tmp/terraform
+mkdir -p /tmp/terraform
+wget -q https://releases.hashicorp.com/terraform/$TF_VERSION/terraform_"$TF_VERSION"_linux_amd64.zip
+unzip -o terraform_"$TF_VERSION"_linux_386.zip -d /tmp/terraform
+sudo chmod +x /tmp/terraform/terraform
+mv /tmp/terraform/terraform /usr/bin/terraform
+
 echo "Added terraform successfully"
 echo "-----------------------------------"
-  
+
 echo "================ Adding packer 0.12.2 ===================="
-export PK_INSALL_LOCATION=/opt
 export PK_VERSION=0.12.2
-export PK_FILENAME=packer_"$PK_VERSION"_linux_amd64.zip
 
 echo "Fetching packer"
 echo "-----------------------------------"
-rm -rf $PK_INSALL_LOCATION/packer
-mkdir -p $PK_INSALL_LOCATION/packer
-wget -q https://releases.hashicorp.com/packer/$PK_VERSION/"$PK_FILENAME"
-unzip -o $PK_FILENAME -d $PK_INSALL_LOCATION/packer
-echo "export PATH=$PATH:$PK_INSALL_LOCATION/packer" >> ~/.bashrc
-export PATH=$PATH:$PK_INSALL_LOCATION/packer  
+rm -rf /tmp/packer
+mkdir -p /tmp/packer
+wget -q https://releases.hashicorp.com/packer/$PK_VERSION/packer_"$PK_VERSION"_linux_amd64.zip
+unzip -o $PK_FILENAME -d /tmp/packer
+sudo chmod +x /tmp/packer/packer
+mv /tmp/packer/packer /usr/bin/packer
+
 echo "Added packer successfully"
 echo "-----------------------------------"
 
