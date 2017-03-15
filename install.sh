@@ -52,6 +52,11 @@ add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install -y git
 
+echo "================= Installing Git LFS ==================="
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git lfs install
+
 echo "================= Adding JQ 1.5.1 ==================="
 apt-get install -y jq
 
