@@ -124,6 +124,19 @@ mv /tmp/packer/packer /usr/bin/packer
 echo "Added packer successfully"
 echo "-----------------------------------"
 
+echo "================= Intalling Shippable CLIs ================="
+echo "Installing shippable_decrypt"
+cp /u14/shippable_decrypt /usr/local/bin/shippable_decrypt
+
+echo "Installing shippable_retry"
+cp /u14/shippable_retry /usr/local/bin/shippable_retry
+
+echo "Installing shippable_replace"
+cp /u14/shippable_replace /usr/local/bin/shippable_replace
+
+echo "Installed Shippable CLIs successfully"
+echo "-------------------------------------"
+
 echo "================= Cleaning package lists ==================="
 apt-get clean
 apt-get autoclean
