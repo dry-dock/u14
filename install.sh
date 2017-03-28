@@ -53,7 +53,7 @@ apt-get update
 apt-get install -y git
 
 echo "================= Installing Git LFS ==================="
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install git-lfs
 git lfs install
 
@@ -72,11 +72,11 @@ echo "================= Installing Ruby 2.3.3 ==================="
 echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-get update && sudo apt-get install google-cloud-sdk
 
 echo "================= Adding kubectl 1.5.1 ==================="
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
+curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
@@ -88,7 +88,7 @@ echo "================= Adding awsebcli 3.9.0 ============"
 sudo pip install 'awsebcli==3.9.0'
 
 echo "================= Adding jfrog-cli 1.7.0 ==================="
-wget -v https://api.bintray.com/content/jfrog/jfrog-cli-go/1.7.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.7.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
@@ -100,7 +100,7 @@ echo "Fetching terraform"
 echo "-----------------------------------"
 rm -rf /tmp/terraform
 mkdir -p /tmp/terraform
-wget -q https://releases.hashicorp.com/terraform/$TF_VERSION/$TF_FILE
+wget -nv https://releases.hashicorp.com/terraform/$TF_VERSION/$TF_FILE
 unzip -o $TF_FILE -d /tmp/terraform
 sudo chmod +x /tmp/terraform/terraform
 mv /tmp/terraform/terraform /usr/bin/terraform
@@ -116,7 +116,7 @@ echo "Fetching packer"
 echo "-----------------------------------"
 rm -rf /tmp/packer
 mkdir -p /tmp/packer
-wget -q https://releases.hashicorp.com/packer/$PK_VERSION/$PK_FILE
+wget -nv https://releases.hashicorp.com/packer/$PK_VERSION/$PK_FILE
 unzip -o $PK_FILE -d /tmp/packer
 sudo chmod +x /tmp/packer/packer
 mv /tmp/packer/packer /usr/bin/packer
