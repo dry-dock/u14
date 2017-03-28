@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 echo "================= Installing NVM ==================="
-curl https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+curl -sS https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
 # Set NVM_DIR so the installations go to the right place
 export NVM_DIR="/root/.nvm"
@@ -10,5 +10,5 @@ export NVM_DIR="/root/.nvm"
 echo "source ~/.nvm/nvm.sh" >> $HOME/.bashrc
 
 echo "================= Installing latest nodejs ==================="
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+curl -sSL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y nodejs
