@@ -92,6 +92,9 @@ wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.7.0/jfrog-cli-linu
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
+echo "================ Adding ansible 2.3.0.0 ===================="
+sudo pip install 'ansible==2.3.0.0'
+
 echo "================ Adding terraform-0.8.7===================="
 export TF_VERSION=0.8.7
 export TF_FILE=terraform_"$TF_VERSION"_linux_amd64.zip
