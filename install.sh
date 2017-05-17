@@ -19,22 +19,22 @@ touch $HOME/.ssh/known_hosts
 
 echo "================= Installing basic packages ==================="
 apt-get install -y \
-    sudo  \
-    build-essential \
-    curl \
-    gcc \
-    make \
-    openssl \
-    software-properties-common \
-    wget \
-    nano \
-    unzip \
-    openssh-client \
-    libxslt-dev \
-    libxml2-dev \
-    htop \
-    gettext \
-    texinfo
+  sudo  \
+  build-essential \
+  curl \
+  gcc \
+  make \
+  openssl \
+  software-properties-common \
+  wget \
+  nano \
+  unzip \
+  openssh-client \
+  libxslt-dev \
+  libxml2-dev \
+  htop \
+  gettext \
+  texinfo
 
 echo "================= Installing Python packages ==================="
 apt-get install -y \
@@ -88,7 +88,7 @@ sudo pip install 'awsebcli==3.9.0'
 
 echo "================ Adding azure-cli 2.0 =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
-    sudo tee /etc/apt/sources.list.d/azure-cli.list
+  sudo tee /etc/apt/sources.list.d/azure-cli.list
 sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install apt-transport-https
 sudo apt-get update && sudo apt-get install azure-cli=0.2.8-1
