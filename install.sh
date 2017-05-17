@@ -19,22 +19,22 @@ touch $HOME/.ssh/known_hosts
 
 echo "================= Installing basic packages ==================="
 apt-get install -y \
-    sudo  \
-    build-essential \
-    curl \
-    gcc \
-    make \
-    openssl \
-    software-properties-common \
-    wget \
-    nano \
-    unzip \
-    openssh-client \
-    libxslt-dev \
-    libxml2-dev \
-    htop \
-    gettext \
-    texinfo
+  sudo  \
+  build-essential \
+  curl \
+  gcc \
+  make \
+  openssl \
+  software-properties-common \
+  wget \
+  nano \
+  unzip \
+  openssh-client \
+  libxslt-dev \
+  libxml2-dev \
+  htop \
+  gettext \
+  texinfo
 
 echo "================= Installing Python packages ==================="
 apt-get install -y \
@@ -80,12 +80,24 @@ curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-
 echo "================= Adding awscli 1.11.44 ============"
 sudo pip install 'awscli==1.11.44'
 
 echo "================= Adding awsebcli 3.9.0 ============"
 sudo pip install 'awsebcli==3.9.0'
+
+echo "================ Adding azure-cli 2.0 =============="
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
+  sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
+sudo apt-get install apt-transport-https
+sudo apt-get update && sudo apt-get install azure-cli=0.2.8-1
+
+echo "================= Adding doctl 1.6.0 ============"
+curl -OL https://github.com/digitalocean/doctl/releases/download/v1.6.0/doctl-1.6.0-linux-amd64.tar.gz
+tar xf doctl-1.6.0-linux-amd64.tar.gz
+sudo mv ~/doctl /usr/local/bin
+rm doctl-1.6.0-linux-amd64.tar.gz
 
 echo "================= Adding jfrog-cli 1.7.0 ==================="
 wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.7.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
@@ -94,6 +106,18 @@ mv jfrog /usr/bin/jfrog
 
 echo "================ Adding ansible 2.3.0.0 ===================="
 sudo pip install 'ansible==2.3.0.0'
+
+echo "================ Adding boto 2.46.1 ======================="
+sudo pip install 'boto==2.46.1'
+
+echo "================ Adding apache-libcloud 2.0.0 ======================="
+sudo pip install 'apache-libcloud==2.0.0'
+
+echo "================ Adding azure 2.0.0 ======================="
+sudo pip install 'azure==2.0.0'
+
+echo "================ Adding dopy 0.3.7a ======================="
+sudo pip install 'dopy==0.3.7a'
 
 echo "================ Adding terraform-0.8.7===================="
 export TF_VERSION=0.8.7
