@@ -88,10 +88,10 @@ sudo pip install 'awsebcli==3.9.0'
 
 echo "================ Adding azure-cli 2.0 =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
-     sudo tee /etc/apt/sources.list.d/azure-cli.list
+    sudo tee /etc/apt/sources.list.d/azure-cli.list
 sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install apt-transport-https
-sudo apt-get update && sudo apt-get install azure-cli=2.0
+sudo apt-get update && sudo apt-get install azure-cli=0.2.8-1
 
 echo "================= Adding doctl 1.6.0 ============"
 curl -OL https://github.com/digitalocean/doctl/releases/download/v1.6.0/doctl-1.6.0-linux-amd64.tar.gz
