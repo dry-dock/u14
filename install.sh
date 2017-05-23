@@ -19,46 +19,46 @@ touch $HOME/.ssh/known_hosts
 
 echo "================= Installing basic packages ==================="
 apt-get install -y \
-  sudo  \
-  build-essential \
-  curl \
-  gcc \
-  make \
-  openssl \
-  software-properties-common \
-  wget \
-  nano \
-  unzip \
-  openssh-client \
-  libxslt-dev \
-  libxml2-dev \
-  htop \
-  gettext \
-  texinfo
+  sudo=1.8.9p5-1ubuntu1  \
+  build-essential=11.6ubuntu6 \
+  curl=7.35.0-1ubuntu2.10 \
+  gcc=4:4.8.2-1ubuntu6 \
+  make=3.81-8.2ubuntu3 \
+  openssl=1.0.1f-1ubuntu2.22 \
+  software-properties-common=0.92.37.8 \
+  wget=1.15-1ubuntu1.14.04.2 \
+  nano=2.2.6-1ubuntu1 \
+  unzip=6.0-9ubuntu1.5 \
+  openssh-client=1:6.6p1-2ubuntu2.8 \
+  libxslt1-dev=1.1.28-2ubuntu0.1 \
+  libxml2-dev=2.9.1+dfsg1-3ubuntu4.9 \
+  htop=1.0.2-3 \
+  gettext=0.18.3.1-1ubuntu3 \
+  texinfo=5.2.0.dfsg.1-2 \
+  rsync=3.1.0-2ubuntu0.2
 
 echo "================= Installing Python packages ==================="
 apt-get install -y \
-  python-pip \
-  python-software-properties \
-  software-properties-common \
-  python-dev
+  python-pip=1.5.4-1ubuntu4 \
+  python-software-properties=0.92.37.8 \
+  python-dev=2.7.5-5ubuntu3
 
-#update pip version
+# Update pip version
 python -m pip install -U pip
 pip install virtualenv
 
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -y git
+apt-get install -y git=1:2.13.0-0ppa1~ubuntu14.04.1
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install git-lfs
+sudo apt-get install git-lfs=2.0.2
 git lfs install
 
-echo "================= Adding JQ 1.5.1 ==================="
-apt-get install -y jq
+echo "================= Adding JQ 1.3.1 ==================="
+apt-get install -y jq=1.3-1.1ubuntu1
 
 echo "================= Installing Node 7.x ==================="
 . /u14/node/install.sh
@@ -73,7 +73,7 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk
+sudo apt-get update && sudo apt-get install google-cloud-sdk=155.0.0-0
 
 echo "================= Adding kubectl 1.5.1 ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
@@ -90,7 +90,7 @@ echo "================ Adding azure-cli 2.0 =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
   sudo tee /etc/apt/sources.list.d/azure-cli.list
 sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
-sudo apt-get install apt-transport-https
+sudo apt-get install apt-transport-https=1.0.1ubuntu2.17
 sudo apt-get update && sudo apt-get install azure-cli=0.2.8-1
 
 echo "================= Adding doctl 1.6.0 ============"
