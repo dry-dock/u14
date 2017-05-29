@@ -73,7 +73,7 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=155.0.0-0
+sudo apt-get update && sudo apt-get install google-cloud-sdk=156.0.0-0
 
 echo "================= Adding kubectl 1.5.1 ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
@@ -113,8 +113,8 @@ sudo pip install 'boto==2.46.1'
 echo "================ Adding apache-libcloud 2.0.0 ======================="
 sudo pip install 'apache-libcloud==2.0.0'
 
-echo "================ Adding azure 2.0.0 ======================="
-sudo pip install 'azure==2.0.0'
+echo "================ Adding azure 2.0.0rc5 ======================="
+sudo pip install 'azure==2.0.0rc5'
 
 echo "================ Adding dopy 0.3.7a ======================="
 sudo pip install 'dopy==0.3.7a'
