@@ -73,7 +73,7 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=156.0.0-0
+sudo apt-get update && sudo apt-get install google-cloud-sdk=157.0.0-0
 
 echo "================= Adding kubectl 1.5.1 ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
