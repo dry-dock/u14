@@ -9,11 +9,11 @@ export NVM_DIR="/root/.nvm"
 # add source of nvm to .bashrc - allows user to use nvm as a command
 echo "source ~/.nvm/nvm.sh" >> $HOME/.bashrc
 
-echo "================= Installing latest nodejs ==================="
+echo "================= Installing nodejs 4.8.3 ==================="
 curl -sSL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get install -y nodejs=4.8.3-1nodesource1~trusty1
 
-echo "================= Installing latest yarn ==================="
+echo "================= Installing yarn 0.24.5 ==================="
 sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
 echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
