@@ -1,0 +1,23 @@
+#!/bin/bash -e
+service_function=$1
+shift
+arguments=$@
+
+if [ "$service_function" == "" ] || [ "$service_function" == "" ]; then
+  echo "Usage: shipctl SERVICE COMMAND"
+  exit 1
+fi
+
+if [ "$service_function" == "setup_jdk" ]; then
+  shippable_jdk "set" $arguments
+elif [ "$service_function" == "retry" ]; then
+  shippable_retry $arguments
+elif [ "$service_function" == "decrypt" ]; then
+  shippable_decrypt $arguments
+elif [ "$service_function" == "service" ]; then
+  shippable_service $arguments
+elif [ "$service_function" == "replace" ]; then
+  shippable_replace $arguments
+else
+  echo "The action that are trying to perform is not supported"
+fi
