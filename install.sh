@@ -162,6 +162,9 @@ cp /u14/shippable_retry /usr/local/bin/shippable_retry
 echo "Installing shippable_replace"
 cp /u14/shippable_replace /usr/local/bin/shippable_replace
 
+echo "Installing shippable_jdk"
+cp /u14/shippable_jdk /usr/local/bin/shippable_jdk
+
 echo "Installing shipctl"
 cp /u14/shipctl /usr/local/bin/shipctl
 
