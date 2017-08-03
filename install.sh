@@ -81,8 +81,8 @@ curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-echo "================= Adding awscli 1.11.44 ============"
-sudo pip install 'awscli==1.11.44'
+echo "================= Adding awscli 1.11.91 ============"
+sudo pip install 'awscli==1.11.91'
 
 echo "================= Adding awsebcli 3.9.0 ============"
 sudo pip install 'awsebcli==3.9.0'
