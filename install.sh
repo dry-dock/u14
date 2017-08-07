@@ -36,7 +36,8 @@ apt-get install -y \
   gettext=0.18.3.1-1ubuntu3 \
   texinfo=5.2.0.dfsg.1-2 \
   rsync=3.1.0-2ubuntu0.2 \
-  psmisc=22.20-1ubuntu2
+  psmisc=22.20-1ubuntu2 \
+  vim=2:7.4.052-1ubuntu3.1
 
 echo "================= Installing Python packages ==================="
 apt-get install -y \
