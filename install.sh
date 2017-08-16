@@ -52,7 +52,7 @@ pip install virtualenv
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -y git=1:2.13.0-0ppa1~ubuntu14.04.1
+apt-get install -y git=1:2.14.1-1.1~ppa0~ubuntu14.04.1
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -75,20 +75,20 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=165.0.0-0
+sudo apt-get update && sudo apt-get install google-cloud-sdk=160.0.0-0
 
 echo "================= Adding kubectl 1.5.1 ==================="
-curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.7.2/bin/linux/amd64/kubectl
+curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
 echo "================= Adding awscli 1.11.91 ============"
 sudo pip install 'awscli==1.11.91'
 
-echo "================= Adding awsebcli 3.10.3 ============"
-sudo pip install 'awsebcli==3.10.3'
+echo "================= Adding awsebcli 3.9.0 ============"
+sudo pip install 'awsebcli==3.9.0'
 
-AZURE_CLI_VERSION=2.0.12-1
+AZURE_CLI_VERSION=0.2.8-1
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
   sudo tee /etc/apt/sources.list.d/azure-cli.list
@@ -102,8 +102,8 @@ tar xf doctl-1.6.0-linux-amd64.tar.gz
 sudo mv ~/doctl /usr/local/bin
 rm doctl-1.6.0-linux-amd64.tar.gz
 
-echo "================= Adding jfrog-cli 1.10.1 ==================="
-wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.10.1/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+echo "================= Adding jfrog-cli 1.7.0 ==================="
+wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.7.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
@@ -122,7 +122,7 @@ sudo pip install 'azure==2.0.0rc5'
 echo "================ Adding dopy 0.3.7a ======================="
 sudo pip install 'dopy==0.3.7a'
 
-export TF_VERSION=0.10.0
+export TF_VERSION=0.8.7
 echo "================ Adding terraform-$TF_VERSION===================="
 export TF_FILE=terraform_"$TF_VERSION"_linux_amd64.zip
 
@@ -138,7 +138,7 @@ mv /tmp/terraform/terraform /usr/bin/terraform
 echo "Added terraform successfully"
 echo "-----------------------------------"
 
-export PK_VERSION=1.0.3
+export PK_VERSION=0.12.2
 echo "================ Adding packer $PK_VERSION ===================="
 export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 
