@@ -138,22 +138,14 @@ get_integration_resource() {
 }
 
 get_json_value() {
-  if [ "$1" == "" ] || [ "$2" == "" ]; then
+  if [ "$1" == "" ]; then
     echo "Usage: shipctl get_json_value JSON_PATH FIELD"
     exit 99
   fi
-  if [ -z "$2" ]; then
-    if [ -f "$META/integration.json" ]; then
-      cat "$1"
-    else
-      echo "The given resource is not of type integration. $META/integration.json: No such file or directory"
-    fi
+  if [ -f "$1" ]; then
+    cat "$1" | jq -r '.'"$2"
   else
-    if [ -f "$META/integration.json" ]; then
-      cat "$1" | jq -r '.'"$2"
-    else
-      echo "The given resource is not of type integration. $META/integration.json: No such file or directory"
-    fi
+    echo "$1: No such file present in this directory"
   fi
 }
 
