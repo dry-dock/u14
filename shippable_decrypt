@@ -6,7 +6,11 @@ shippable_decrypt() {
   local temp_dest='/tmp/shippable/decrypt'
 
   if [ "$key_file" == "" ]; then
-    key_file=/tmp/ssh/00_sub
+    if [ -f "/tmp/ssh/00_sub" ]; then
+      key_file=/tmp/ssh/00_sub
+    else
+      key_file=/tmp/00_sub
+    fi
   fi
 
   echo "shippable_decrypt: Decrypting $source_file using key $key_file"
