@@ -116,6 +116,39 @@ get_resource_version_number() {
   eval echo "$""$UP"_VERSIONNUMBER
 }
 
+get_resource_version_key() {
+  if [ "$1" == "" ] || [ "$2" == "" ]; then
+    echo "Usage: shipctl get_resource_version_key RESOURCE_NAME KEY"
+    exit 99
+  fi
+  UP=$(get_resource_name "$1")
+  RESOURCE_META=$(get_resource_meta $UP)
+  if [ ! -d $RESOURCE_META ]; then
+    echo "IN directory not present for resource: $1"
+    exit 99
+  fi
+  RESOURCE_VERSION_FILE=$RESOURCE_META/version.json
+  if [ ! -f $RESOURCE_VERSION_FILE ]; then
+    echo "version.json not present for resource: $1"
+    exit 99
+  fi
+  VERSION_KEYS_ARRAY=("versionName" "versionId" "versionNumber")
+  FETCH_FROM_PROPERTYBAG=true
+  for KEY in ${VERSION_KEYS_ARRAY[@]}
+  do
+    if [ "$KEY" == "$2" ]; then
+      FETCH_FROM_PROPERTYBAG=false
+      break
+    fi
+  done
+  if [ "$FETCH_FROM_PROPERTYBAG" = true ]; then
+    VERSION_KEY_CMD="cat $RESOURCE_VERSION_FILE | jq '.version.propertyBag.$2'"
+  else
+    VERSION_KEY_CMD="cat $RESOURCE_VERSION_FILE | jq '.version.$2'"
+  fi
+  eval $VERSION_KEY_CMD
+}
+
 get_integration_resource() {
   if [ "$1" == "" ]; then
     echo "Usage: shipctl get_integration_resource RESOURCE_NAME"
