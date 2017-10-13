@@ -21,7 +21,7 @@ echo "================= Installing basic packages ==================="
 apt-get install -y \
   sudo=1.8.9p5-1ubuntu1  \
   build-essential=11.6ubuntu6 \
-  curl=7.35.0-1ubuntu2.10 \
+  curl=7.35.0-1ubuntu2.11 \
   gcc=4:4.8.2-1ubuntu6 \
   make=3.81-8.2ubuntu3 \
   openssl=1.0.1f-1ubuntu2.22 \
@@ -47,12 +47,12 @@ apt-get install -y \
 
 # Update pip version
 python -m pip install -U pip
-pip install virtualenv
+pip install virtualenv==15.1.0
 
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -y git=1:2.14.1-1.1~ppa0~ubuntu14.04.1
+apt-get install -y git=1:2.14.2-1~ppa0~ubuntu14.04.1
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
