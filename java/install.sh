@@ -10,7 +10,7 @@ apt-get update
 apt-get install -y openjdk-8-jdk=8u141-b15-3~14.04
 update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
-apt-get install --reinstall ca-certificates=20160104ubuntu0.14.04.1
+apt-get install --reinstall ca-certificates=20170717~14.04.1
 add-apt-repository ppa:maarten-fonville/ppa
 apt-get update
 apt-get install icedtea-8-plugin=1.5.3-0ubuntu0.15.10.2~maarten0~trusty
