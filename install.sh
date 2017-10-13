@@ -21,7 +21,7 @@ echo "================= Installing basic packages ==================="
 apt-get install -y \
   sudo=1.8.9p5-1ubuntu1  \
   build-essential=11.6ubuntu6 \
-  curl=7.35.0-1ubuntu2.10 \
+  curl=7.35.0-1ubuntu2.11 \
   gcc=4:4.8.2-1ubuntu6 \
   make=3.81-8.2ubuntu3 \
   openssl=1.0.1f-1ubuntu2.22 \
@@ -47,12 +47,12 @@ apt-get install -y \
 
 # Update pip version
 python -m pip install -U pip
-pip install virtualenv
+pip install virtualenv==15.1.0
 
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -y git=1:2.14.1-1.1~ppa0~ubuntu14.04.1
+apt-get install -y git=1:2.14.2-1~ppa0~ubuntu14.04.1
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -75,20 +75,20 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=160.0.0-0
+sudo apt-get update && sudo apt-get install google-cloud-sdk=173.0.0-0
 
-echo "================= Adding kubectl 1.5.1 ==================="
-curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
+echo "================= Adding kubectl 1.8.0 ==================="
+curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-echo "================= Adding awscli 1.11.91 ============"
-sudo pip install 'awscli==1.11.91'
+echo "================= Adding awscli 1.11.164 ============"
+sudo pip install 'awscli==1.11.164'
 
-echo "================= Adding awsebcli 3.9.0 ============"
-sudo pip install 'awsebcli==3.9.0'
+echo "================= Adding awsebcli 3.11.0 ============"
+sudo pip install 'awsebcli==3.11.0'
 
-AZURE_CLI_VERSION=0.2.8-1
+AZURE_CLI_VERSION=2.0.19-1
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
   sudo tee /etc/apt/sources.list.d/azure-cli.list
@@ -116,8 +116,8 @@ sudo pip install 'boto==2.46.1'
 echo "================ Adding apache-libcloud 2.0.0 ======================="
 sudo pip install 'apache-libcloud==2.0.0'
 
-echo "================ Adding azure 2.0.0rc5 ======================="
-sudo pip install 'azure==2.0.0rc5'
+echo "================ Adding azure 2.0.0 ======================="
+sudo pip install 'azure==2.0.0'
 
 echo "================ Adding dopy 0.3.7a ======================="
 sudo pip install 'dopy==0.3.7a'
@@ -138,7 +138,7 @@ mv /tmp/terraform/terraform /usr/bin/terraform
 echo "Added terraform successfully"
 echo "-----------------------------------"
 
-export PK_VERSION=0.12.2
+export PK_VERSION=1.1.0
 echo "================ Adding packer $PK_VERSION ===================="
 export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 
