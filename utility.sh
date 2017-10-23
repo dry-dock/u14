@@ -142,9 +142,9 @@ get_resource_version_key() {
     fi
   done
   if [ "$FETCH_FROM_PROPERTYBAG" = true ]; then
-    VERSION_KEY_CMD="cat $RESOURCE_VERSION_FILE | jq '.version.propertyBag.$2'"
+    VERSION_KEY_CMD="cat $RESOURCE_VERSION_FILE | jq -r '.version.propertyBag.$2'"
   else
-    VERSION_KEY_CMD="cat $RESOURCE_VERSION_FILE | jq '.version.$2'"
+    VERSION_KEY_CMD="cat $RESOURCE_VERSION_FILE | jq -r '.version.$2'"
   fi
   eval $VERSION_KEY_CMD
 }
