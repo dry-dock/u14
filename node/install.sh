@@ -11,7 +11,7 @@ echo "source ~/.nvm/nvm.sh" >> $HOME/.bashrc
 
 echo "================= Installing nodejs 4.8.4 ==================="
 curl -sSL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-sudo apt-get install -y nodejs=4.8.4-2nodesource1~trusty1
+sudo apt-get install -y nodejs=4.8.5-1nodesource1
 
 echo "================= Installing yarn 0.24.5 ==================="
 sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
