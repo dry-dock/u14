@@ -21,12 +21,12 @@ echo "================= Installing basic packages ==================="
 apt-get install -y \
   sudo=1.8.9p5-1ubuntu1  \
   build-essential=11.6ubuntu6 \
-  curl=7.35.0-1ubuntu2.11 \
+  curl=7.35.0-1ubuntu2.12 \
   gcc=4:4.8.2-1ubuntu6 \
   make=3.81-8.2ubuntu3 \
   openssl=1.0.1f-1ubuntu2.22 \
   software-properties-common=0.92.37.8 \
-  wget=1.15-1ubuntu1.14.04.2 \
+  wget=1.15-1ubuntu1.14.04.3 \
   nano=2.2.6-1ubuntu1 \
   unzip=6.0-9ubuntu1.5 \
   openssh-client=1:6.6p1-2ubuntu2.8 \
