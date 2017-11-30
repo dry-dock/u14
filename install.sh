@@ -21,10 +21,10 @@ echo "================= Installing basic packages ==================="
 apt-get install -y \
   sudo=1.8.9p5-1ubuntu1  \
   build-essential=11.6ubuntu6 \
-  curl=7.35.0-1ubuntu2.12 \
+  curl=7.35.0-1ubuntu2.13 \
   gcc=4:4.8.2-1ubuntu6 \
   make=3.81-8.2ubuntu3 \
-  openssl=1.0.1f-1ubuntu2.22 \
+  openssl=1.0.1f-1ubuntu2.23 \
   software-properties-common=0.92.37.8 \
   wget=1.15-1ubuntu1.14.04.3 \
   nano=2.2.6-1ubuntu1 \
@@ -52,7 +52,7 @@ pip install virtualenv==15.1.0
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -y git=1:2.14.2-1~ppa0~ubuntu14.04.1
+apt-get install -y git=1:2.15.0-1~ppa0~ubuntu14.04.1
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -155,23 +155,10 @@ echo "Added packer successfully"
 echo "-----------------------------------"
 
 echo "================= Intalling Shippable CLIs ================="
-echo "Installing shippable_decrypt"
-cp /u14/shippable_decrypt /usr/local/bin/shippable_decrypt
 
-echo "Installing shippable_retry"
-cp /u14/shippable_retry /usr/local/bin/shippable_retry
-
-echo "Installing shippable_replace"
-cp /u14/shippable_replace /usr/local/bin/shippable_replace
-
-echo "Installing shippable_jdk"
-cp /u14/shippable_jdk /usr/local/bin/shippable_jdk
-
-echo "Installing shipctl"
-cp /u14/shipctl /usr/local/bin/shipctl
-
-echo "Installing utility"
-cp /u14/utility.sh /usr/local/bin/utility.sh
+git clone https://github.com/Shippable/node.git nodeRepo
+./nodeRepo/shipctl/Ubuntu_14.04/install.sh
+rm -rf nodeRepo
 
 echo "Installed Shippable CLIs successfully"
 echo "-------------------------------------"
