@@ -31,11 +31,11 @@ apt-get install -y \
   unzip=6.0-9ubuntu1.5 \
   openssh-client=1:6.6p1-2ubuntu2.8 \
   libxslt1-dev=1.1.28-2ubuntu0.1 \
-  libxml2-dev=2.9.1+dfsg1-3ubuntu4.10 \
+  libxml2-dev=2.9.1+dfsg1-3ubuntu4.11 \
   htop=1.0.2-3 \
   gettext=0.18.3.1-1ubuntu3 \
   texinfo=5.2.0.dfsg.1-2 \
-  rsync=3.1.0-2ubuntu0.2 \
+  rsync=3.1.0-2ubuntu0.3 \
   psmisc=22.20-1ubuntu2 \
   vim=2:7.4.052-1ubuntu3.1
 
