@@ -82,6 +82,19 @@ curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
+KOPS_VERSION=1.8.0
+echo "Installing KOPS version: $KOPS_VERSION"
+curl -LO https://github.com/kubernetes/kops/releases/download/"$KOPS_VERSION"/kops-linux-amd64
+chmod +x kops-linux-amd64
+mv kops-linux-amd64 /usr/local/bin/kops
+
+HELM_VERSION=v2.8.0
+echo "Installing helm version: $HELM_VERSION"
+wget https://storage.googleapis.com/kubernetes-helm/helm-"$HELM_VERSION"-linux-amd64.tar.gz
+tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
+rm -rf linux-amd64
+
 echo "================= Adding awscli 1.11.164 ============"
 sudo pip install -q 'awscli==1.11.164'
 
