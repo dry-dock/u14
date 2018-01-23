@@ -20,7 +20,7 @@ echo "================ Installing oracle-java8-installer ================="
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
 add-apt-repository -y ppa:webupd8team/java
 apt-get update
-apt-get install -q -y oracle-java8-installer=8u151*
+apt-get install -q -y oracle-java8-installer=8u161*
 update-alternatives --set java /usr/lib/jvm/java-8-oracle/jre/bin/java
 update-alternatives --set javac /usr/lib/jvm/java-8-oracle/bin/javac
 update-alternatives --set javaws /usr/lib/jvm/java-8-oracle/jre/bin/javaws
