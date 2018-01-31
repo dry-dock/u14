@@ -52,7 +52,7 @@ pip install -q virtualenv==15.1.0
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -q -y git=1:2.15.1*
+apt-get install -q -y git=1:2.16.1*
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -101,7 +101,7 @@ sudo pip install -q 'awscli==1.11.164'
 echo "================= Adding awsebcli 3.11.0 ============"
 sudo pip install -q 'awsebcli==3.11.0'
 
-AZURE_CLI_VERSION=2.0.23*
+AZURE_CLI_VERSION=2.0.25*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
   sudo tee /etc/apt/sources.list.d/azure-cli.list
