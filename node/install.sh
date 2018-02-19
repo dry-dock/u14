@@ -7,7 +7,7 @@ curl -sS https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | b
 export NVM_DIR="/root/.nvm"
 
 # add source of nvm to .bashrc - allows user to use nvm as a command
-echo "source ~/.nvm/nvm.sh" >> $HOME/.bashrc
+echo "source ~/.nvm/nvm.sh" >> /etc/drydock/.env
 
 echo "================= Installing nodejs 4.8.7 ==================="
 curl -sSL https://deb.nodesource.com/setup_4.x | sudo -E bash -
