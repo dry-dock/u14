@@ -171,6 +171,15 @@ mv /tmp/packer/packer /usr/bin/packer
 echo "Added packer successfully"
 echo "-----------------------------------"
 
+echo "================= Intalling Shippable CLIs ================="
+
+git clone https://github.com/Shippable/node.git nodeRepo
+./nodeRepo/shipctl/x86_64/Ubuntu_14.04/install.sh
+rm -rf nodeRepo
+
+echo "Installed Shippable CLIs successfully"
+echo "-------------------------------------"
+
 echo "================= Cleaning package lists ==================="
 apt-get clean
 apt-get autoclean
