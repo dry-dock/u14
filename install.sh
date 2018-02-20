@@ -17,7 +17,6 @@ mv config $HOME/.ssh/
 mv 90forceyes /etc/apt/apt.conf.d/
 touch $HOME/.ssh/known_hosts
 mkdir -p /etc/drydock
-touch .env
 
 echo "================= Installing basic packages ==================="
 apt-get install -y -q \
