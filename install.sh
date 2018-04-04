@@ -96,13 +96,13 @@ tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
 
-echo "================= Adding awscli 1.11.164 ============"
-sudo pip install -q 'awscli==1.11.164'
+echo "================= Adding awscli 1.14.70 ============"
+sudo pip install -q 'awscli==1.14.70'
 
-echo "================= Adding awsebcli 3.11.0 ============"
-sudo pip install -q 'awsebcli==3.11.0'
+echo "================= Adding awsebcli 3.12.4 ============"
+sudo pip install -q 'awsebcli==3.12.4'
 
-AZURE_CLI_VERSION=2.0.25*
+AZURE_CLI_VERSION=2.0.30*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
   sudo tee /etc/apt/sources.list.d/azure-cli.list
@@ -116,8 +116,8 @@ tar xf doctl-1.6.0-linux-amd64.tar.gz
 sudo mv ~/doctl /usr/local/bin
 rm doctl-1.6.0-linux-amd64.tar.gz
 
-echo "================= Adding jfrog-cli 1.7.0 ==================="
-wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.7.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+echo "================= Adding jfrog-cli 1.14.0 ==================="
+wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.14.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
