@@ -96,8 +96,8 @@ tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
 
-echo "================= Adding awscli 1.14.70 ============"
-sudo pip install -q 'awscli==1.14.70'
+echo "================= Adding awscli 1.14.64 ============"
+sudo pip install -q 'awscli==1.14.64'
 
 echo "================= Adding awsebcli 3.12.4 ============"
 sudo pip install -q 'awsebcli==3.12.4'
