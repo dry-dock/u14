@@ -7,7 +7,7 @@ apt-get install -q default-jdk=2:1.7-51
 echo "================= Installing openjdk-8-jdk ==================="
 add-apt-repository -y ppa:openjdk-r/ppa
 apt-get update
-apt-get install -y -q openjdk-8-jdk=8u141*
+apt-get install -y -q openjdk-8-jdk=8u162*
 update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
 apt-get install --reinstall ca-certificates=20170717*
