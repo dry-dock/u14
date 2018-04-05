@@ -49,7 +49,7 @@ apt-get install -q -y \
 
 # Update pip version
 python -m pip install -q -U pip
-pip install -q virtualenv==15.1.0
+pip install -q virtualenv==15.2.0
 
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
