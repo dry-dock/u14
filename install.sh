@@ -30,6 +30,7 @@ apt-get install -y -q \
   wget=1.15* \
   nano=2.2.6* \
   unzip=6.0* \
+  zip=3.0*\
   openssh-client=1:6.6p1* \
   libxslt1-dev=1.1.28* \
   libxml2-dev=2.9.1* \
@@ -76,20 +77,20 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=173.0.0-0
+sudo apt-get update && sudo apt-get install google-cloud-sdk=194.0.0-0
 
-echo "================= Adding kubectl 1.8.0 ==================="
+echo "================= Adding kubectl 1.9.0 ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-KOPS_VERSION=1.8.0
+KOPS_VERSION=1.8.1
 echo "Installing KOPS version: $KOPS_VERSION"
 curl -LO https://github.com/kubernetes/kops/releases/download/"$KOPS_VERSION"/kops-linux-amd64
 chmod +x kops-linux-amd64
 mv kops-linux-amd64 /usr/local/bin/kops
 
-HELM_VERSION=v2.8.0
+HELM_VERSION=v2.8.2
 echo "Installing helm version: $HELM_VERSION"
 wget https://storage.googleapis.com/kubernetes-helm/helm-"$HELM_VERSION"-linux-amd64.tar.gz
 tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
@@ -110,36 +111,36 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install -q apt-transport-https=1.0.1*
 sudo apt-get update && sudo apt-get install -y -q azure-cli=$AZURE_CLI_VERSION
 
-echo "================= Adding doctl 1.6.0 ============"
-curl -OL https://github.com/digitalocean/doctl/releases/download/v1.6.0/doctl-1.6.0-linux-amd64.tar.gz
-tar xf doctl-1.6.0-linux-amd64.tar.gz
+echo "================= Adding doctl 1.7.2 ============"
+curl -OL https://github.com/digitalocean/doctl/releases/download/v1.7.2/doctl-1.7.2-linux-amd64.tar.gz
+tar xf doctl-1.7.2-linux-amd64.tar.gz
 sudo mv ~/doctl /usr/local/bin
-rm doctl-1.6.0-linux-amd64.tar.gz
+rm doctl-1.7.2-linux-amd64.tar.gz
 
 echo "================= Adding jfrog-cli 1.14.0 ==================="
 wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.14.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
-echo "================ Adding ansible 2.3.0.0 ===================="
-sudo pip install -q 'ansible==2.3.0.0'
+echo "================ Adding ansible 2.4.3.0 ===================="
+sudo pip install -q 'ansible==2.4.3.0'
 
-echo "================ Adding boto 2.46.1 ======================="
-sudo pip install -q 'boto==2.46.1'
+echo "================ Adding boto 2.48.0 ======================="
+sudo pip install -q 'boto==2.48.0'
 
 echo "============  Adding boto3 ==============="
-pip install -q 'boto3==1.5.15'
+pip install -q 'boto3==1.6.16'
 
-echo "================ Adding apache-libcloud 2.0.0 ======================="
-sudo pip install -q 'apache-libcloud==2.0.0'
+echo "================ Adding apache-libcloud 2.3.0 ======================="
+sudo pip install -q 'apache-libcloud==2.3.0'
 
-echo "================ Adding azure 2.0.0 ======================="
-sudo pip install -q 'azure==2.0.0'
+echo "================ Adding azure 3.0.0 ======================="
+sudo pip install -q 'azure==3.0.0'
 
 echo "================ Adding dopy 0.3.7a ======================="
 sudo pip install -q 'dopy==0.3.7a'
 
-export TF_VERSION=0.8.7
+export TF_VERSION=0.11.5
 echo "================ Adding terraform-$TF_VERSION===================="
 export TF_FILE=terraform_"$TF_VERSION"_linux_amd64.zip
 
@@ -155,7 +156,7 @@ mv /tmp/terraform/terraform /usr/bin/terraform
 echo "Added terraform successfully"
 echo "-----------------------------------"
 
-export PK_VERSION=1.1.0
+export PK_VERSION=1.2.2
 echo "================ Adding packer $PK_VERSION ===================="
 export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 
