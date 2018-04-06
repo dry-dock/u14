@@ -64,7 +64,7 @@ git lfs install
 echo "================= Adding JQ 1.3.1 ==================="
 apt-get install -q -y jq=1.3*
 
-echo "================= Installing Node 7.x ==================="
+echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
 
 echo "================= Installing Java 1.8.0 ==================="
