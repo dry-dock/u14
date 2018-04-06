@@ -70,7 +70,7 @@ echo "================= Installing Node 8.x ==================="
 echo "================= Installing Java 1.8.0 ==================="
 . /u14/java/install.sh
 
-echo "================= Installing Ruby 2.3.5 ==================="
+echo "================= Installing Ruby 2.5.0 ==================="
 . /u14/ruby/install.sh
 
 echo "================= Adding gclould ============"
