@@ -80,7 +80,7 @@ curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key ad
 sudo apt-get update && sudo apt-get install google-cloud-sdk=194.0.0-0
 
 echo "================= Adding kubectl 1.9.0 ==================="
-curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl
+curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
