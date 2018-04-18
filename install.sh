@@ -43,9 +43,9 @@ apt-get install -y -q \
 
 echo "================= Installing Python packages ==================="
 apt-get install -q -y \
-  python-pip=1.5.4* \
-  python-software-properties=0.92.37.8 \
-  python-dev=2.7.5*
+  python-pip=1.5* \
+  python-software-properties=0.92* \
+  python-dev=2.7*
 
 # Update pip version
 python -m pip install -q -U pip
@@ -54,11 +54,11 @@ pip install -q virtualenv==15.2.0
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -q -y git=1:2.16.2*
+apt-get install -q -y git=1:2.16*
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install -q git-lfs=2.0.2
+sudo apt-get install -q git-lfs=2.0*
 git lfs install
 
 echo "================= Adding JQ 1.3.1 ==================="
@@ -77,7 +77,7 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=194.0.0-0
+sudo apt-get update && sudo apt-get install google-cloud-sdk=194.0*
 
 echo "================= Adding kubectl 1.9.0 ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
