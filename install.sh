@@ -20,7 +20,7 @@ mkdir -p /etc/drydock
 
 echo "================= Installing basic packages ==================="
 apt-get install -y  \
-  sudo=1.8.9p5-1ubuntu1.4 \
+  sudo=1.8* \
   build-essential=11.6* \
   curl=7.35.0* \
   gcc=4:4.8.2* \
