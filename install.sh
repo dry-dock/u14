@@ -19,8 +19,8 @@ touch $HOME/.ssh/known_hosts
 mkdir -p /etc/drydock
 
 echo "================= Installing basic packages ==================="
-apt-get install -y -q \
-  sudo=1.8.9p5-1ubuntu1  \
+apt-get install -y  \
+  sudo=1.8* \
   build-essential=11.6* \
   curl=7.35.0* \
   gcc=4:4.8.2* \
@@ -42,27 +42,27 @@ apt-get install -y -q \
   vim=2:7.4.052*
 
 echo "================= Installing Python packages ==================="
-apt-get install -q -y \
-  python-pip=1.5.4* \
-  python-software-properties=0.92.37.8 \
-  python-dev=2.7.5*
+apt-get install  -y \
+  python-pip=1.5* \
+  python-software-properties=0.92* \
+  python-dev=2.7*
 
 # Update pip version
-python -m pip install -q -U pip
+python -m pip install  -U pip
 pip install -q virtualenv==15.2.0
 
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install -q -y git=1:2.16.2*
+apt-get install  -y git=1:2.16*
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install -q git-lfs=2.0.2
+sudo apt-get install  git-lfs=2.0*
 git lfs install
 
 echo "================= Adding JQ 1.3.1 ==================="
-apt-get install -q -y jq=1.3*
+apt-get install  -y jq=1.3*
 
 echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
@@ -77,14 +77,14 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=194.0.0-0
+sudo apt-get update && sudo apt-get install google-cloud-sdk=194.0*
 
 echo "================= Adding kubectl 1.9.0 ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-KOPS_VERSION=1.8.1
+KOPS_VERSION=1.8*
 echo "Installing KOPS version: $KOPS_VERSION"
 curl -LO https://github.com/kubernetes/kops/releases/download/"$KOPS_VERSION"/kops-linux-amd64
 chmod +x kops-linux-amd64
@@ -98,12 +98,12 @@ mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
 
 echo "================= Adding awscli 1.14.64 ============"
-sudo pip install -q 'awscli==1.14.64'
+sudo pip install  'awscli==1.14.64'
 
 echo "================= Adding awsebcli 3.12.4 ============"
-sudo pip install -q 'awsebcli==3.12.4'
+sudo pip install  'awsebcli==3.12.4'
 
-AZURE_CLI_VERSION=2.0.30*
+AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
   sudo tee /etc/apt/sources.list.d/azure-cli.list
