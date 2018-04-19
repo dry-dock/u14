@@ -19,7 +19,7 @@ touch $HOME/.ssh/known_hosts
 mkdir -p /etc/drydock
 
 echo "================= Installing basic packages ==================="
-apt-get install -y  \
+apt-get install -y -q \
   sudo=1.8* \
   build-essential=11.6* \
   curl=7.35.0* \
@@ -42,7 +42,7 @@ apt-get install -y  \
   vim=2:7.4.052*
 
 echo "================= Installing Python packages ==================="
-apt-get install  -y \
+apt-get install -q -y \
   python-pip=1.5* \
   python-software-properties=0.92* \
   python-dev=2.7*
@@ -54,15 +54,15 @@ pip install -q virtualenv==15.2.0
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install  -y git=1:2.17.0*
+apt-get install -q -y git=1:2.17.0*
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install  git-lfs=2.0*
+sudo apt-get install -q git-lfs=2.0*
 git lfs install
 
 echo "================= Adding JQ 1.3.1 ==================="
-apt-get install  -y jq=1.3*
+apt-get install -q -y jq=1.3*
 
 echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
@@ -98,10 +98,10 @@ mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
 
 echo "================= Adding awscli 1.14.64 ============"
-sudo pip install  'awscli==1.14.64'
+sudo pip install -q 'awscli==1.14.64'
 
 echo "================= Adding awsebcli 3.12.4 ============"
-sudo pip install  'awsebcli==3.12.4'
+sudo pip install -q 'awsebcli==3.12.4'
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
