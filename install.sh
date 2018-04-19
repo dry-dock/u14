@@ -51,10 +51,6 @@ apt-get install  -y \
 python -m pip install  -U pip
 pip install -q virtualenv==15.2.0
 
-sudo pip install --ignore-installed 'awsebcli==3.12.4'
-
-exit 1
-
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
@@ -105,8 +101,8 @@ echo "================= Adding awscli 1.14.64 ============"
 sudo pip install  'awscli==1.14.64'
 
 echo "================= Adding awsebcli 3.12.4 ============"
-sudo pip install  'awsebcli==3.12.4' --ignore-installed six
 
+sudo pip install  'awsebcli==3.12.4' --ignore-installed six
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
