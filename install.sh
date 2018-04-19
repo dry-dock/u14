@@ -100,6 +100,9 @@ rm -rf linux-amd64
 echo "================= Adding awscli 1.14.64 ============"
 sudo pip install  'awscli==1.14.64'
 
+echo "===============Adding colorama================="
+sudo pip install 'colorama==0.3.9'
+
 echo "================= Adding awsebcli 3.12.4 ============"
 sudo pip install  'awsebcli==3.12.4'
 
