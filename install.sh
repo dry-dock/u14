@@ -102,7 +102,7 @@ sudo pip install  'awscli==1.14.64'
 
 echo "================= Adding awsebcli 3.12.4 ============"
 
-sudo pip install  'awsebcli==3.12.4' --ignore-installed six
+sudo pip install  'awsebcli==3.12.4' --ignore-installed colorama
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
