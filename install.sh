@@ -101,7 +101,7 @@ echo "================= Adding awscli 1.14.64 ============"
 sudo pip install  'awscli==1.14.64'
 
 echo "===============Adding colorama================="
-sudo pip uninstall -y 'colorama==0.3.7'
+sudo pip uninstall -y colorama
 
 echo "================= Adding awsebcli 3.12.4 ============"
 sudo pip install  'awsebcli==3.12.4'
