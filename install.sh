@@ -54,7 +54,7 @@ pip install -q virtualenv==15.2.0
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install  -y git=1:2.16*
+apt-get install  -y git=1:2.16.2*
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
