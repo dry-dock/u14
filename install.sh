@@ -101,9 +101,8 @@ echo "================= Adding awscli 1.14.64 ============"
 sudo pip install  'awscli==1.14.64'
 
 echo "================= Adding awsebcli 3.12.4 ============"
-## fixing issues with colorama package installed using distutils
-## https://github.com/pypa/pip/issues/3165
-sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
+
+sudo pip install  'awsebcli==3.12.4' --ignore-installed six
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
