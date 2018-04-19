@@ -105,8 +105,6 @@ echo "================= Adding awsebcli 3.12.4 ============"
 ## https://github.com/pypa/pip/issues/3165
 sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
 
-exit 1
-
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
