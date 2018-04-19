@@ -51,7 +51,7 @@ apt-get install  -y \
 python -m pip install  -U pip
 pip install -q virtualenv==15.2.0
 
-sudo pip install --ignore-installed 'awsebcli==3.12.4'
+sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
 
 exit 1
 
