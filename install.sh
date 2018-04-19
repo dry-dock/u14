@@ -100,11 +100,9 @@ rm -rf linux-amd64
 echo "================= Adding awscli 1.14.64 ============"
 sudo pip install  'awscli==1.14.64'
 
-echo "===============Adding colorama================="
-sudo pip uninstall -y colorama
 
 echo "================= Adding awsebcli 3.12.4 ============"
-sudo pip install  'awsebcli==3.12.4'
+sudo pip install  'awsebcli==3.12.4' --ignore-installed six
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
