@@ -54,7 +54,7 @@ pip install -q virtualenv==15.2.0
 echo "================= Installing Git ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install  -y git=1:2.16.2*
+apt-get install  -y git=1:2.17.0*
 
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -137,8 +137,8 @@ sudo pip install -q 'apache-libcloud==2.3.0'
 echo "================ Adding azure 3.0.0 ======================="
 sudo pip install -q 'azure==3.0.0'
 
-echo "================ Adding dopy 0.3.7a ======================="
-sudo pip install -q 'dopy==0.3.7a'
+echo "================ Adding dopy 0.3.7 ======================="
+sudo pip install -q 'dopy==0.3.7'
 
 export TF_VERSION=0.11.5
 echo "================ Adding terraform-$TF_VERSION===================="
