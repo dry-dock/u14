@@ -56,6 +56,8 @@ add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install  -y git=1:2.17.0*
 
+#Error: Failed to call git rev-parse --git-dir --show-toplevel: "fatal: not a git repository (or any of the parent directories): .git\n"
+# This error is negligible - https://github.com/git-lfs/git-lfs/issues/2837
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install  git-lfs=2.0*
