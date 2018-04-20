@@ -41,7 +41,7 @@ apt-get install -y  \
   psmisc=22.20* \
   vim=2:7.4.052*
   
-# They not resolved till now - https://github.com/Microsoft/WSL/issues/2782
+# rsync throws a warning that is not resolved yet - https://github.com/Microsoft/WSL/issues/2782
 
 # Here warnings is negligible.If we upgrade python it wont show the warnings
 echo "================= Installing Python packages ==================="
