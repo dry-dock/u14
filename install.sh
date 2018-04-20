@@ -43,7 +43,7 @@ apt-get install -y  \
   
 # They not resolved till now - https://github.com/Microsoft/WSL/issues/2782
 
-# This types of warnings is negligible.If we upgrade python it wont show this type of warnings
+# Here warnings is negligible.If we upgrade python it wont show the warnings
 echo "================= Installing Python packages ==================="
 apt-get install  -y \
   python-pip=1.5* \
@@ -60,7 +60,7 @@ apt-get update
 apt-get install  -y git=1:2.17.0*
 
 
-# This error is negligible - https://github.com/git-lfs/git-lfs/issues/2837
+# Here error is negligible - https://github.com/git-lfs/git-lfs/issues/2837
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install  git-lfs=2.0*
