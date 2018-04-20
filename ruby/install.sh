@@ -15,7 +15,7 @@ source /usr/local/rvm/scripts/rvm
 rvm requirements
 
 echo "================= Installing default ruby ==================="
-rvm install 2.5.0
+rvm reinstall 2.5.0 --disable-binary
 
 # tell rvm to use this version as default
 rvm use 2.5.0 --default

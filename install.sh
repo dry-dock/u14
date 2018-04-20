@@ -40,7 +40,10 @@ apt-get install -y  \
   rsync=3.1.0* \
   psmisc=22.20* \
   vim=2:7.4.052*
+  
+# rsync throws a warning that is not resolved yet - https://github.com/Microsoft/WSL/issues/2782
 
+# Python throws a few warnings that can be ignored. New versions of python do not throw these warnings
 echo "================= Installing Python packages ==================="
 apt-get install  -y \
   python-pip=1.5* \
@@ -56,6 +59,8 @@ add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install  -y git=1:2.17.0*
 
+
+# Git-LFS throws a warning that can be ignored - https://github.com/git-lfs/git-lfs/issues/2837
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install  git-lfs=2.0*
@@ -67,6 +72,7 @@ apt-get install  -y jq=1.3*
 echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
 
+# Java throws warnings that not resolved yet - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=791531;msg=5
 echo "================= Installing Java 1.8.0 ==================="
 . /u14/java/install.sh
 
@@ -115,7 +121,7 @@ sudo apt-get update && sudo apt-get install -y -q azure-cli=$AZURE_CLI_VERSION
 echo "================= Adding doctl 1.7.2 ============"
 curl -OL https://github.com/digitalocean/doctl/releases/download/v1.7.2/doctl-1.7.2-linux-amd64.tar.gz
 tar xf doctl-1.7.2-linux-amd64.tar.gz
-sudo mv ~/doctl /usr/local/bin
+sudo mv ./doctl /usr/local/bin
 rm doctl-1.7.2-linux-amd64.tar.gz
 
 echo "================= Adding jfrog-cli 1.14.0 ==================="
