@@ -41,7 +41,6 @@ apt-get install -y  \
   psmisc=22.20* \
   vim=2:7.4.052*
   
-#update-rc.d: warning: default stop runlevel arguments (0 1 6) do not match rsync Default-Stop values (none)
 # They not resolved till now - https://github.com/Microsoft/WSL/issues/2782
 
 # /usr/local/lib/python2.7/dist-packages/pip/vendor/urllib3/util/ssl.py:339: SNIMissingWarning: An HTTPS request has been made, but the SNI (Subject Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. You can upgrade to a newer version of Python to solve this. For more information, see
@@ -61,7 +60,7 @@ add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install  -y git=1:2.17.0*
 
-#Error: Failed to call git rev-parse --git-dir --show-toplevel: "fatal: not a git repository (or any of the parent directories): .git\n"
+
 # This error is negligible - https://github.com/git-lfs/git-lfs/issues/2837
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -74,8 +73,6 @@ apt-get install  -y jq=1.3*
 echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
 
-#update-alternatives: warning: not replacing /usr/share/man/man1/itweb-settings.1.gz with a link
-#update-alternatives: warning: forcing reinstallation of alternative /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/itweb-settings because link group itweb-settings is broken
 # They not yet fixed till now - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=791531;msg=5
 echo "================= Installing Java 1.8.0 ==================="
 . /u14/java/install.sh
