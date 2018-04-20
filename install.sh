@@ -43,7 +43,6 @@ apt-get install -y  \
   
 # They not resolved till now - https://github.com/Microsoft/WSL/issues/2782
 
-# /usr/local/lib/python2.7/dist-packages/pip/vendor/urllib3/util/ssl.py:339: SNIMissingWarning: An HTTPS request has been made, but the SNI (Subject Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. You can upgrade to a newer version of Python to solve this. For more information, see
 # This types of warnings is negligible.If we upgrade python it wont show this type of warnings
 echo "================= Installing Python packages ==================="
 apt-get install  -y \
