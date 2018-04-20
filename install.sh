@@ -72,7 +72,7 @@ apt-get install  -y jq=1.3*
 echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
 
-# They not yet fixed till now - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=791531;msg=5
+# Java throws warnings that not resolved yet - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=791531;msg=5
 echo "================= Installing Java 1.8.0 ==================="
 . /u14/java/install.sh
 
