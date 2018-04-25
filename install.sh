@@ -55,7 +55,7 @@ apt-get install  -y \
 python -m pip install  -U pip
 pip install -q virtualenv==15.2.0
 
-echo "================= Installing Git ==================="
+echo "================= Installing Git v2.17 ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install  -y git=1:2.17.0*
@@ -65,7 +65,6 @@ apt-get install  -y git=1:2.17.0*
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install  git-lfs=2.0*
-git lfs install
 
 echo "================= Adding JQ 1.3.1 ==================="
 apt-get install  -y jq=1.3*
@@ -104,7 +103,6 @@ tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
 
-
 echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
 
@@ -115,7 +113,7 @@ echo "================= Adding awsebcli 3.12.4 ============"
 sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
 
 echo "================= Adding openstack client 3.15.0 ============"
-sudo pip install python-openstackclient==3.15.0
+sudo pip install python-openstackclient==3.15.0 --ignore-installed urllib3
 sudo pip install shade==1.27.1
 
 AZURE_CLI_VERSION=2.0*
