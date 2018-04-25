@@ -39,8 +39,9 @@ apt-get install -y  \
   texinfo=5.2.0* \
   rsync=3.1.0* \
   psmisc=22.20* \
-  vim=2:7.4.052*
-  
+  vim=2:7.4.052* \
+  groff=1.22.*
+
 # rsync throws a warning that is not resolved yet - https://github.com/Microsoft/WSL/issues/2782
 
 # Python throws a few warnings that can be ignored. New versions of python do not throw these warnings
@@ -103,12 +104,19 @@ tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
 
+
+echo "================= Adding apache libcloud 2.3.0 ============"
+sudo pip install 'apache-libcloud==2.3.0'
+
 echo "================= Adding awscli 1.14.64 ============"
-sudo pip install  'awscli==1.14.64'
+sudo pip install 'awscli==1.14.64'
 
 echo "================= Adding awsebcli 3.12.4 ============"
+sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
 
-sudo pip install  'awsebcli==3.12.4' --ignore-installed colorama
+echo "================= Adding openstack client 3.15.0 ============"
+sudo pip install python-openstackclient==3.15.0
+sudo pip install shade==1.27.1
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
