@@ -55,7 +55,7 @@ apt-get install  -y \
 python -m pip install  -U pip
 pip install -q virtualenv==15.2.0
 
-echo "================= Installing Git ==================="
+echo "================= Installing Git v2.17 ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install  -y git=1:2.17.0*
@@ -102,7 +102,6 @@ wget https://storage.googleapis.com/kubernetes-helm/helm-"$HELM_VERSION"-linux-a
 tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
-
 
 echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
