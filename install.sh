@@ -22,7 +22,7 @@ echo "================= Installing basic packages ==================="
 apt-get install -y  \
   sudo=1.8* \
   build-essential=11.6* \
-  curl=7.47* \
+  curl=7.35* \
   gcc=4:4.8* \
   make=3.81* \
   openssl=1.0* \
