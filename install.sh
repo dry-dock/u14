@@ -22,24 +22,24 @@ echo "================= Installing basic packages ==================="
 apt-get install -y  \
   sudo=1.8* \
   build-essential=11.6* \
-  curl=7.35.0* \
-  gcc=4:4.8.2* \
+  curl=7.47* \
+  gcc=4:4.8* \
   make=3.81* \
-  openssl=1.0.1f* \
-  software-properties-common=0.92.37* \
+  openssl=1.0* \
+  software-properties-common=0.92* \
   wget=1.15* \
-  nano=2.2.6* \
+  nano=2.2* \
   unzip=6.0* \
   zip=3.0*\
-  openssh-client=1:6.6p1* \
-  libxslt1-dev=1.1.28* \
-  libxml2-dev=2.9.1* \
-  htop=1.0.2* \
-  gettext=0.18.3.1* \
-  texinfo=5.2.0* \
-  rsync=3.1.0* \
+  openssh-client=1:6.6* \
+  libxslt1-dev=1.1* \
+  libxml2-dev=2.9* \
+  htop=1.0* \
+  gettext=0.18* \
+  texinfo=5.2* \
+  rsync=3.1* \
   psmisc=22.20* \
-  vim=2:7.4.052* \
+  vim=2:7.4* \
   groff=1.22.*
 
 # rsync throws a warning that is not resolved yet - https://github.com/Microsoft/WSL/issues/2782
