@@ -64,7 +64,7 @@ apt-get install  -y git=1:2.17.0*
 # Git-LFS throws a warning that can be ignored - https://github.com/git-lfs/git-lfs/issues/2837
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install  git-lfs=2.0*
+sudo apt-get install  git-lfs=2.4.0
 
 echo "================= Adding JQ 1.3.1 ==================="
 apt-get install  -y jq=1.3*
