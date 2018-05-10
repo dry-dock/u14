@@ -1,9 +1,9 @@
 #!/bin/bash -e
 
+export DEBIAN_FRONTEND=noninteractive
 dpkg-divert --local --rename --add /sbin/initctl
 locale-gen en_US en_US.UTF-8 && \
 dpkg-reconfigure locales
-export DEBIAN_FRONTEND=noninteractive
 echo "HOME=$HOME"
 cd /u14
 
