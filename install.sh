@@ -106,8 +106,8 @@ rm -rf linux-amd64
 echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
 
-echo "================= Adding awscli 1.15.16 ============"
-sudo pip install 'awscli==1.15.16'
+echo "================= Adding awscli 1.15.14 ============"
+sudo pip install 'awscli==1.15.14'
 
 echo "================= Adding awsebcli 3.12.4 ============"
 sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
@@ -124,25 +124,25 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install -q apt-transport-https=1.0.1*
 sudo apt-get update && sudo apt-get install -y -q azure-cli=$AZURE_CLI_VERSION
 
-echo "================= Adding doctl 1.7.2 ============"
-curl -OL https://github.com/digitalocean/doctl/releases/download/v1.7.2/doctl-1.7.2-linux-amd64.tar.gz
-tar xf doctl-1.7.2-linux-amd64.tar.gz
+echo "================= Adding doctl 1.8.0 ============"
+curl -OL https://github.com/digitalocean/doctl/releases/download/v1.8.0/doctl-1.8.0-linux-amd64.tar.gz
+tar xf doctl-1.8.0-linux-amd64.tar.gz
 sudo mv ./doctl /usr/local/bin
-rm doctl-1.7.2-linux-amd64.tar.gz
+rm doctl-1.8.0-linux-amd64.tar.gz
 
-echo "================= Adding jfrog-cli 1.15.0 ==================="
-wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.15.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+echo "================= Adding jfrog-cli 1.15.1 ==================="
+wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.15.1/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
-echo "================ Adding ansible 2.4.3.0 ===================="
-sudo pip install -q 'ansible==2.4.3.0'
+echo "================ Adding ansible 2.5.2 ===================="
+sudo pip install -q 'ansible==2.5.2'
 
 echo "================ Adding boto 2.48.0 ======================="
 sudo pip install -q 'boto==2.48.0'
 
 echo "============  Adding boto3 ==============="
-pip install -q 'boto3==1.6.16'
+pip install -q 'boto3==1.7.16'
 
 echo "================ Adding apache-libcloud 2.3.0 ======================="
 sudo pip install -q 'apache-libcloud==2.3.0'
