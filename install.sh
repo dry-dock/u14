@@ -107,7 +107,7 @@ echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
 
 echo "================= Adding awscli 1.15.14 ============"
-sudo pip install 'awscli==1.15.16'
+sudo pip install 'awscli==1.15.14'
 
 echo "================= Adding awsebcli 3.12.4 ============"
 sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
