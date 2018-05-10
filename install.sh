@@ -142,7 +142,7 @@ echo "================ Adding boto 2.48.0 ======================="
 sudo pip install -q 'boto==2.48.0'
 
 echo "============  Adding boto3 ==============="
-pip install -q 'boto3==1.6.16'
+pip install -q 'boto3==1.7.16'
 
 echo "================ Adding apache-libcloud 2.3.0 ======================="
 sudo pip install -q 'apache-libcloud==2.3.0'
