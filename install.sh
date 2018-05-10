@@ -135,8 +135,8 @@ wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.15.0/jfrog-cli-lin
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
-echo "================ Adding ansible 2.4.3.0 ===================="
-sudo pip install -q 'ansible==2.4.3.0'
+echo "================ Adding ansible 2.5.2 ===================="
+sudo pip install -q 'ansible==2.5.2'
 
 echo "================ Adding boto 2.48.0 ======================="
 sudo pip install -q 'boto==2.48.0'
