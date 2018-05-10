@@ -47,7 +47,7 @@ apt-get install -y  \
 # Python throws a few warnings that can be ignored. New versions of python do not throw these warnings
 echo "================= Installing Python packages ==================="
 apt-get install  -y \
-  python-pip=1.5* \
+  python-pip=8.1* \
   python-software-properties=0.92* \
   python-dev=2.7*
 
