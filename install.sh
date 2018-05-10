@@ -130,8 +130,8 @@ tar xf doctl-1.7.2-linux-amd64.tar.gz
 sudo mv ./doctl /usr/local/bin
 rm doctl-1.7.2-linux-amd64.tar.gz
 
-echo "================= Adding jfrog-cli 1.15.0 ==================="
-wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.15.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+echo "================= Adding jfrog-cli 1.15.1 ==================="
+wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.15.1/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
