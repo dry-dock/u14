@@ -1,6 +1,5 @@
 FROM ubuntu:14.04
 
-ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
 ADD . /u14
