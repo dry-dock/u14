@@ -111,7 +111,7 @@ echo "================= Adding awsebcli 3.12.4 ============"
 sudo pip install 'awsebcli==3.12.4' 
 
 echo "================= Adding openstack client 3.15.0 ============"
-sudo pip install python-openstackclient==3.15.0 
+sudo pip install python-openstackclient==3.15.0 --ignore-installed urllib3
 sudo pip install shade==1.28.0
 
 AZURE_CLI_VERSION=2.0*
