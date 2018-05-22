@@ -51,8 +51,6 @@ apt-get install  -y \
   python-software-properties=0.92* \
   python-dev=2.7*
 
-# Update pip version
-python -m pip install  -U pip
 pip install -q virtualenv==15.2.0
 
 echo "================= Installing Git v2.17 ==================="
