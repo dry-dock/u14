@@ -108,7 +108,7 @@ echo "================= Adding awscli 1.15.14 ============"
 sudo pip install 'awscli==1.15.14'
 
 echo "================= Adding awsebcli 3.12.4 ============"
-sudo pip install 'awsebcli==3.12.4' --ignore-installed colorama
+sudo pip install 'awsebcli==3.12.4' 
 
 echo "================= Adding openstack client 3.15.0 ============"
 sudo pip install python-openstackclient==3.15.0 --ignore-installed urllib3
