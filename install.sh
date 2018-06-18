@@ -56,7 +56,7 @@ pip install -q virtualenv==15.2.0
 echo "================= Installing Git v2.17 ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install  -y git=1:2.17.0*
+apt-get install  -y git=1:2.17.1*
 
 
 # Git-LFS throws a warning that can be ignored - https://github.com/git-lfs/git-lfs/issues/2837
