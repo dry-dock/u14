@@ -53,7 +53,7 @@ apt-get install  -y \
 
 pip install -q virtualenv==16.0.0
 
-echo "================= Installing Git v2.17 ==================="
+echo "================= Installing Git v2.18 ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
 apt-get install  -y git=1:2.18.0*
@@ -104,10 +104,10 @@ rm -rf linux-amd64
 echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
 
-echo "================= Adding awscli 1.15.14 ============"
+echo "================= Adding awscli 1.15.55 ============"
 sudo pip install 'awscli==1.15.55'
 
-echo "================= Adding awsebcli 3.12.4 ============"
+echo "================= Adding awsebcli 3.14.2 ============"
 sudo pip install 'awsebcli==3.14.2' 
 
 echo "================= Adding openstack client 3.15.0 ============"
