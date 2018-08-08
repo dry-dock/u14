@@ -62,7 +62,7 @@ apt-get install  -y git=1:2.*
 # Git-LFS throws a warning that can be ignored - https://github.com/git-lfs/git-lfs/issues/2837
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install  git-lfs=2.4.2
+sudo apt-get install  git-lfs=2.5.1
 
 echo "================= Adding JQ 1.3.x ==================="
 apt-get install  -y jq=1.3*
@@ -81,14 +81,14 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=207.0*
+sudo apt-get update && sudo apt-get install google-cloud-sdk=211.0*
 
 echo "================= Adding kubectl 1.11.0 ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-KOPS_VERSION=1.9.1
+KOPS_VERSION=1.9.2
 echo "Installing KOPS version: $KOPS_VERSION"
 curl -LO https://github.com/kubernetes/kops/releases/download/"$KOPS_VERSION"/kops-linux-amd64
 chmod +x kops-linux-amd64
@@ -104,15 +104,15 @@ rm -rf linux-amd64
 echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
 
-echo "================= Adding awscli 1.15.55 ============"
-sudo pip install 'awscli==1.15.55'
+echo "================= Adding awscli 1.15.73 ============"
+sudo pip install 'awscli==1.15.73'
 
-echo "================= Adding awsebcli 3.14.2 ============"
-sudo pip install 'awsebcli==3.14.2' 
+echo "================= Adding awsebcli 3.14.3 ============"
+sudo pip install 'awsebcli==3.14.3' 
 
-echo "================= Adding openstack client 3.15.0 ============"
-sudo pip install python-openstackclient==3.15.0 --ignore-installed urllib3
-sudo pip install shade==1.28.0
+echo "================= Adding openstack client 3.16.0 ============"
+sudo pip install python-openstackclient==3.16.0 --ignore-installed urllib3
+sudo pip install shade==1.29.0
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
@@ -128,22 +128,19 @@ tar xf doctl-1.8.3-linux-amd64.tar.gz
 sudo mv ./doctl /usr/local/bin
 rm doctl-1.8.3-linux-amd64.tar.gz
 
-echo "================= Adding jfrog-cli 1.17.0 ==================="
-wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.17.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+echo "================= Adding jfrog-cli 1.18.0 ==================="
+wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.18.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
-echo "================ Adding ansible 2.6.1 ===================="
-sudo pip install -q 'ansible==2.6.1'
+echo "================ Adding ansible 2.6.2 ===================="
+sudo pip install -q 'ansible==2.6.2'
 
-echo "================ Adding boto 2.48.0 ======================="
-sudo pip install -q 'boto==2.48.0'
+echo "================ Adding boto 2.49.0 ======================="
+sudo pip install -q 'boto==2.49.0'
 
 echo "============  Adding boto3 ==============="
-pip install -q 'boto3==1.7.54'
-
-echo "================ Adding apache-libcloud 2.3.0 ======================="
-sudo pip install -q 'apache-libcloud==2.3.0'
+pip install -q 'boto3==1.7.72'
 
 echo "================ Adding azure 3.0.0 ======================="
 sudo pip install -q 'azure==3.0.0'
@@ -167,7 +164,7 @@ mv /tmp/terraform/terraform /usr/bin/terraform
 echo "Added terraform successfully"
 echo "-----------------------------------"
 
-export PK_VERSION=1.2.4
+export PK_VERSION=1.2.5
 echo "================ Adding packer $PK_VERSION ===================="
 export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 
