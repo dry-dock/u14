@@ -13,8 +13,8 @@ echo "================= Installing nodejs 8.11.3 ==================="
 curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -q -y nodejs=8.11*
 
-echo "================= Installing yarn 1.7.0 ==================="
+echo "================= Installing yarn 1.9.4 ==================="
 sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
 echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
-sudo apt-get install -q -y yarn=1.7*
+sudo apt-get install -q -y yarn=1.9*
