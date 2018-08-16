@@ -7,7 +7,7 @@ apt-get install -q default-jdk=2:1.7*
 echo "================= Installing openjdk-10-jdk ==================="
 export OPENJDK_VERSION="10.0.2"
 mkdir -p /usr/lib/jvm && cd /usr/lib/jvm
-wget "https://download.java.net/java/GA/jdk10/$OPENJDK_VERSION/19aef61b38124481863b1413dce1855f/13/openjdk-$OPENJDK_VERSION_linux-x64_bin.tar.gz"
+wget "https://download.java.net/java/GA/jdk10/$OPENJDK_VERSION/19aef61b38124481863b1413dce1855f/13/openjdk-"$OPENJDK_VERSION"_linux-x64_bin.tar.gz"
 tar -xzf openjdk-$OPENJDK_VERSION_linux-x64_bin.tar.gz
 mv jdk-$OPENJDK_VERSION/ java-10-openjdk-amd64
 
