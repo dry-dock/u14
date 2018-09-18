@@ -55,10 +55,11 @@ export VIRTUALENV_VERSION=16.0.0
 echo "================= Adding $VIRTUALENV_VERSION ==================="
 sudo pip install virtualenv=="$VIRTUALENV_VERSION"
 
-echo "================= Installing Git v2.19 ==================="
+export GIT_VERSION=1:2.*
+echo "================= Installing Git "$GIT_VERSION" ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install  -y git=1:2.*
+apt-get install  -y git="$GIT_VERSION"
 
 
 # Git-LFS throws a warning that can be ignored - https://github.com/git-lfs/git-lfs/issues/2837
@@ -66,8 +67,9 @@ echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install  git-lfs=2.5.1
 
+export JQ_VERSION=1.3*
 echo "================= Adding JQ 1.3.x ==================="
-apt-get install  -y jq=1.3*
+apt-get install  -y jq="$JQ_VERSION"
 
 echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
