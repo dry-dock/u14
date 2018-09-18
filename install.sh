@@ -51,12 +51,15 @@ apt-get install  -y \
   python-software-properties=0.92* \
   python-dev=2.7*
 
-pip install -q virtualenv==16.0.0
+export VIRTUALENV_VERSION=16.0.0
+echo "================= Adding $VIRTUALENV_VERSION ==================="
+sudo pip install virtualenv=="$VIRTUALENV_VERSION"
 
-echo "================= Installing Git v2.18 ==================="
+export GIT_VERSION=1:2.*
+echo "================= Installing Git "$GIT_VERSION" ==================="
 add-apt-repository ppa:git-core/ppa -y
 apt-get update
-apt-get install  -y git=1:2.*
+apt-get install  -y git="$GIT_VERSION"
 
 
 # Git-LFS throws a warning that can be ignored - https://github.com/git-lfs/git-lfs/issues/2837
@@ -64,14 +67,15 @@ echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install  git-lfs=2.5.1
 
+export JQ_VERSION=1.3*
 echo "================= Adding JQ 1.3.x ==================="
-apt-get install  -y jq=1.3*
+apt-get install  -y jq="$JQ_VERSION"
 
 echo "================= Installing Node 8.x ==================="
 . /u14/node/install.sh
 
 # Java throws warnings that not resolved yet - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=791531;msg=5
-echo "================= Installing Java 1.8.0 ==================="
+echo "================= Installing Java 1.10.0 ==================="
 . /u14/java/install.sh
 
 echo "================= Installing Ruby 2.5.1 ==================="
@@ -81,20 +85,21 @@ echo "================= Adding gclould ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=211.0*
+sudo apt-get update && sudo apt-get install google-cloud-sdk=216.0*
 
-echo "================= Adding kubectl 1.11.0 ==================="
-curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/linux/amd64/kubectl
+export KUBECTL_VERSION=v1.11.0
+echo "================= Adding kubectl "$KUBECTL_VERSION" ==================="
+curl -sSLO https://storage.googleapis.com/kubernetes-release/release/"$KUBECTL_VERSION"/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-KOPS_VERSION=1.9.2
+KOPS_VERSION=1.10.0
 echo "Installing KOPS version: $KOPS_VERSION"
 curl -LO https://github.com/kubernetes/kops/releases/download/"$KOPS_VERSION"/kops-linux-amd64
 chmod +x kops-linux-amd64
 mv kops-linux-amd64 /usr/local/bin/kops
 
-HELM_VERSION=v2.9.1
+HELM_VERSION=v2.10.0
 echo "Installing helm version: $HELM_VERSION"
 wget https://storage.googleapis.com/kubernetes-helm/helm-"$HELM_VERSION"-linux-amd64.tar.gz
 tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
@@ -104,15 +109,22 @@ rm -rf linux-amd64
 echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
 
-echo "================= Adding awscli 1.15.73 ============"
-sudo pip install 'awscli==1.15.73'
+export AWS_VERSION=1.16.14
+echo "================= Adding awscli "$AWS_VERSION" ============"
+sudo pip install  awscli=="$AWS_VERSION"
 
-echo "================= Adding awsebcli 3.14.3 ============"
-sudo pip install 'awsebcli==3.14.3' 
+export AWSEBCLI_VERSION=3.14.6
+echo "================= Adding awscli "$AWSEBCLI_VERSION" ============"
+sudo pip install  awscli=="$AWSEBCLI_VERSION"
 
-echo "================= Adding openstack client 3.16.0 ============"
-sudo pip install python-openstackclient==3.16.0 --ignore-installed urllib3
-sudo pip install shade==1.29.0
+export OPENSTACKCLIENT_VERSION=3.16.1
+echo "================= Adding openstack client $OPENSTACKCLIENT_VERSION ============"
+sudo pip install python-openstackclient=="$OPENSTACKCLIENT_VERSION" --ignore-installed urllib3
+
+export SHADE_VERSION=1.29.0
+echo "==================adding shade $SHADE_VERSION================"
+sudo pip install shade=="$SHADE_VERSION"
+
 
 AZURE_CLI_VERSION=2.0*
 echo "================ Adding azure-cli $AZURE_CLI_VERSION  =============="
@@ -122,33 +134,41 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install -q apt-transport-https=1.0.1*
 sudo apt-get update && sudo apt-get install -y -q azure-cli=$AZURE_CLI_VERSION
 
-echo "================= Adding doctl 1.8.3 ============"
-curl -OL https://github.com/digitalocean/doctl/releases/download/v1.8.3/doctl-1.8.3-linux-amd64.tar.gz
-tar xf doctl-1.8.3-linux-amd64.tar.gz
-sudo mv ./doctl /usr/local/bin
-rm doctl-1.8.3-linux-amd64.tar.gz
+export DOCTL_VERSION=1.9.0
+echo "================= Adding doctl $DOCTL_VERSION============"
+curl -OL https://github.com/digitalocean/doctl/releases/download/v"$DOCTL_VERSION"/doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
+tar xf doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
+sudo mv doctl /usr/local/bin
+rm doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
 
-echo "================= Adding jfrog-cli 1.18.0 ==================="
-wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/1.18.0/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
+
+export JFROG_VERSION=1.19.1
+echo "================= Adding jfrog-cli "$JFROG_VERSION"==================="
+wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/"$JFROG_VERSION"/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
-mv jfrog /usr/bin/jfrog
+sudo mv jfrog /usr/bin/jfrog
 
-echo "================ Adding ansible 2.6.2 ===================="
-sudo pip install -q 'ansible==2.6.2'
+export ANSIBLE_VERSION=2.6.4
+echo "================ Adding ansible $ANSIBLE_VERSION===================="
+sudo pip install ansible=="$ANSIBLE_VERSION"
 
-echo "================ Adding boto 2.49.0 ======================="
-sudo pip install -q 'boto==2.49.0'
+export BOTO_VERSION=2.49.0
+echo "================ Adding boto $BOTO_VERSION ======================="
+sudo pip install  boto=="$BOTO_VERSION"
 
-echo "============  Adding boto3 ==============="
-pip install -q 'boto3==1.7.72'
+export BOTO3_VERSION=1.9.4
+echo "============  Adding boto3 "$BOTO_VERSION" ==============="
+sudo pip install boto3=="$BOTO3_VERSION"
 
-echo "================ Adding azure 3.0.0 ======================="
-sudo pip install -q 'azure==3.0.0'
+export AZURE_VERSION=3.0
+echo "================ Adding azure $AZURE_VERSION ======================="
+sudo pip install azure=="$AZURE_VERSION"
 
-echo "================ Adding dopy 0.3.7 ======================="
-sudo pip install -q 'dopy==0.3.7'
+export DOPY_VERSION=0.3.7
+echo "================ Adding dopy $DOPY_VERSION ======================="
+sudo pip install dopy=="$DOPY_VERSION"
 
-export TF_VERSION=0.11.7
+export TF_VERSION=0.11.8
 echo "================ Adding terraform-$TF_VERSION===================="
 export TF_FILE=terraform_"$TF_VERSION"_linux_amd64.zip
 
@@ -164,7 +184,7 @@ mv /tmp/terraform/terraform /usr/bin/terraform
 echo "Added terraform successfully"
 echo "-----------------------------------"
 
-export PK_VERSION=1.2.5
+export PK_VERSION=1.3.0
 echo "================ Adding packer $PK_VERSION ===================="
 export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 
