@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-export NVM_VERSION=V0.33.9
+export NVM_VERSION=v0.33.9
 echo "================= Installing NVM "$NVM_VERSION" ==================="
 curl -sS https://raw.githubusercontent.com/creationix/nvm/"$NVM_VERSION"/install.sh | bash
 
@@ -13,11 +13,11 @@ echo "source ~/.nvm/nvm.sh" >> /etc/drydock/.env
 export NODE_VERSION=8.12*
 export NPM_VERSION=6.4.1
 echo "================= Installing nodejs "$NODE_VERSION" ==================="
-curl -sSL https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo -E bash -
+curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -q -y nodejs="$NODE_VERSION"
 npm install npm@"$NPM_VERSION" -g
 
-export YARN_VERSION=1.9.4
+export YARN_VERSION=1.9*
 echo "================= Installing yarn "$YARN_VERSION" ==================="
 sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
 echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list

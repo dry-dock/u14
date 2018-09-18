@@ -115,7 +115,7 @@ sudo pip install  awscli=="$AWS_VERSION"
 
 export AWSEBCLI_VERSION=3.14.6
 echo "================= Adding awscli "$AWSEBCLI_VERSION" ============"
-sudo pip install  awscli=="$AWSEBCLI_VERSION"
+sudo pip install  awsebcli=="$AWSEBCLI_VERSION"
 
 export OPENSTACKCLIENT_VERSION=3.16.1
 echo "================= Adding openstack client $OPENSTACKCLIENT_VERSION ============"
