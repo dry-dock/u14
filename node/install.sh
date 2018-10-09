@@ -17,7 +17,7 @@ curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -q -y nodejs="$NODE_VERSION"
 npm install npm@"$NPM_VERSION" -g
 
-export YARN_VERSION=1.9*
+export YARN_VERSION=1.10*
 echo "================= Installing yarn "$YARN_VERSION" ==================="
 sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
 echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
