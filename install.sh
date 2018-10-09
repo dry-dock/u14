@@ -82,11 +82,12 @@ echo "================= Installing Java  ==================="
 echo "================= Installing Ruby  ==================="
 . /u14/ruby/install.sh
 
-echo "================= Adding gclould ============"
+export GCLOUD_VERSION=218.0*
+echo "================= Adding gclould "$GCLOUD_VERSION"============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=218.0*
+sudo apt-get update && sudo apt-get install google-cloud-sdk="$GCLOUD_VERSION"
 
 export KUBECTL_VERSION=v1.12.0
 echo "================= Adding kubectl "$KUBECTL_VERSION" ==================="
