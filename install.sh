@@ -63,31 +63,33 @@ apt-get install  -y git="$GIT_VERSION"
 
 
 # Git-LFS throws a warning that can be ignored - https://github.com/git-lfs/git-lfs/issues/2837
+export GIT_LFS=2.5.2
 echo "================= Installing Git LFS ==================="
 curl -sS https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install  git-lfs=2.5.1
+sudo apt-get install  git-lfs="$GIT_LFS"
 
 export JQ_VERSION=1.3*
 echo "================= Adding JQ 1.3.x ==================="
 apt-get install  -y jq="$JQ_VERSION"
 
-echo "================= Installing Node 8.x ==================="
+echo "================= Installing Node  ==================="
 . /u14/node/install.sh
 
 # Java throws warnings that not resolved yet - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=791531;msg=5
-echo "================= Installing Java 1.10.0 ==================="
+echo "================= Installing Java  ==================="
 . /u14/java/install.sh
 
-echo "================= Installing Ruby 2.5.1 ==================="
+echo "================= Installing Ruby  ==================="
 . /u14/ruby/install.sh
 
-echo "================= Adding gclould ============"
+export GCLOUD_VERSION=218.0*
+echo "================= Adding gcloud "$GCLOUD_VERSION"============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk=216.0*
+sudo apt-get update && sudo apt-get install google-cloud-sdk="$GCLOUD_VERSION"
 
-export KUBECTL_VERSION=v1.11.0
+export KUBECTL_VERSION=v1.12.0
 echo "================= Adding kubectl "$KUBECTL_VERSION" ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/"$KUBECTL_VERSION"/bin/linux/amd64/kubectl
 chmod +x ./kubectl
@@ -99,7 +101,7 @@ curl -LO https://github.com/kubernetes/kops/releases/download/"$KOPS_VERSION"/ko
 chmod +x kops-linux-amd64
 mv kops-linux-amd64 /usr/local/bin/kops
 
-HELM_VERSION=v2.10.0
+HELM_VERSION=v2.11.0
 echo "Installing helm version: $HELM_VERSION"
 wget https://storage.googleapis.com/kubernetes-helm/helm-"$HELM_VERSION"-linux-amd64.tar.gz
 tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
@@ -109,7 +111,7 @@ rm -rf linux-amd64
 echo "================= Adding apache libcloud 2.3.0 ============"
 sudo pip install 'apache-libcloud==2.3.0'
 
-export AWS_VERSION=1.16.14
+export AWS_VERSION=1.16.24
 echo "================= Adding awscli "$AWS_VERSION" ============"
 sudo pip install  awscli=="$AWS_VERSION"
 
@@ -148,7 +150,7 @@ wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/"$JFROG_VERSION"/jfr
 sudo chmod +x jfrog
 sudo mv jfrog /usr/bin/jfrog
 
-export ANSIBLE_VERSION=2.6.4
+export ANSIBLE_VERSION=2.6.5
 echo "================ Adding ansible $ANSIBLE_VERSION===================="
 sudo pip install ansible=="$ANSIBLE_VERSION"
 
@@ -156,7 +158,7 @@ export BOTO_VERSION=2.49.0
 echo "================ Adding boto $BOTO_VERSION ======================="
 sudo pip install  boto=="$BOTO_VERSION"
 
-export BOTO3_VERSION=1.9.4
+export BOTO3_VERSION=1.9.14
 echo "============  Adding boto3 "$BOTO_VERSION" ==============="
 sudo pip install boto3=="$BOTO3_VERSION"
 
@@ -184,7 +186,7 @@ mv /tmp/terraform/terraform /usr/bin/terraform
 echo "Added terraform successfully"
 echo "-----------------------------------"
 
-export PK_VERSION=1.3.0
+export PK_VERSION=1.3.1
 echo "================ Adding packer $PK_VERSION ===================="
 export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 
