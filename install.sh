@@ -83,7 +83,7 @@ echo "================= Installing Ruby  ==================="
 . /u14/ruby/install.sh
 
 export GCLOUD_VERSION=218.0*
-echo "================= Adding gclould "$GCLOUD_VERSION"============"
+echo "================= Adding gcloud "$GCLOUD_VERSION"============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
