@@ -144,7 +144,7 @@ sudo mv doctl /usr/local/bin
 rm doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
 
 
-export JFROG_VERSION=1.19.1
+export JFROG_VERSION=1.20.1
 echo "================= Adding jfrog-cli "$JFROG_VERSION"==================="
 wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/"$JFROG_VERSION"/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
