@@ -10,14 +10,14 @@ export NVM_DIR="/root/.nvm"
 # add source of nvm to .bashrc - allows user to use nvm as a command
 echo "source ~/.nvm/nvm.sh" >> /etc/drydock/.env
 
-export NODE_VERSION=8.12*
+export NODE_VERSION=10.1*
 export NPM_VERSION=6.4.1
 echo "================= Installing nodejs "$NODE_VERSION" ==================="
 curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -q -y nodejs="$NODE_VERSION"
 npm install npm@"$NPM_VERSION" -g
 
-export YARN_VERSION=1.10*
+export YARN_VERSION=1.12*
 echo "================= Installing yarn "$YARN_VERSION" ==================="
 sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
 echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
