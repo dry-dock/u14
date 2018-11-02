@@ -13,7 +13,7 @@ echo "source ~/.nvm/nvm.sh" >> /etc/drydock/.env
 export NODE_VERSION=10.1*
 export NPM_VERSION=6.4.1
 echo "================= Installing nodejs "$NODE_VERSION" ==================="
-curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt-get install -q -y nodejs="$NODE_VERSION"
 npm install npm@"$NPM_VERSION" -g
 
