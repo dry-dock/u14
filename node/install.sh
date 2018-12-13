@@ -10,7 +10,7 @@ export NVM_DIR="/root/.nvm"
 # add source of nvm to .bashrc - allows user to use nvm as a command
 echo "source ~/.nvm/nvm.sh" >> /etc/drydock/.env
 
-export NODE_VERSION=10.1*
+export NODE_VERSION=10.14*
 export NPM_VERSION=6.4.1
 echo "================= Installing nodejs "$NODE_VERSION" ==================="
 curl -sSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
