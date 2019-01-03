@@ -136,7 +136,7 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install -q apt-transport-https=1.0.1*
 sudo apt-get update && sudo apt-get install -y -q azure-cli=$AZURE_CLI_VERSION
 
-export DOCTL_VERSION=1.12.1
+export DOCTL_VERSION=1.12.2
 echo "================= Adding doctl $DOCTL_VERSION============"
 curl -OL https://github.com/digitalocean/doctl/releases/download/v"$DOCTL_VERSION"/doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
 tar xf doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
