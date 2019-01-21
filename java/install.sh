@@ -1,10 +1,14 @@
 #!/bin/bash -e
 
+apt-get update
+dpkg --purge --force-depends ca-certificates-java
+apt-get install ca-certificates-java
+
 export JAVA_VERSION=11
-export ORACLEJDK_VERSION=11.0.1
+export ORACLEJDK_VERSION=11.0.2
 echo "================ Installing oracle-java"$ORACLEJDK_VERSION"-installer ================="
 mkdir -p /usr/lib/jvm && cd /usr/lib/jvm
-wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/11.0.1+13/90cf5d8f270a4347a95050320eef3fb7/jdk-"$ORACLEJDK_VERSION"_linux-x64_bin.tar.gz
+wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/11.0.2+7/f51449fcd52f4d52b93a989c5c56ed3c/jdk-"$ORACLEJDK_VERSION"_linux-x64_bin.tar.gz
 tar -xzf jdk-"$ORACLEJDK_VERSION"_linux-x64_bin.tar.gz
 mv jdk-"$ORACLEJDK_VERSION"/ java-"$JAVA_VERSION"-oraclejdk-amd64
 
