@@ -51,7 +51,7 @@ apt-get install  -y \
   python-software-properties=0.92* \
   python-dev=2.7*
 
-export VIRTUALENV_VERSION=16.2.0
+export VIRTUALENV_VERSION=16.4.0
 echo "================= Adding $VIRTUALENV_VERSION ==================="
 sudo pip install virtualenv=="$VIRTUALENV_VERSION"
 
@@ -82,40 +82,41 @@ echo "================= Installing Java  ==================="
 echo "================= Installing Ruby  ==================="
 . /u14/ruby/install.sh
 
-export GCLOUD_VERSION=228.0*
+export GCLOUD_VERSION=233.0*
 echo "================= Adding gcloud "$GCLOUD_VERSION"============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-get update && sudo apt-get install google-cloud-sdk="$GCLOUD_VERSION"
 
-export KUBECTL_VERSION=v1.13.1
+export KUBECTL_VERSION=v1.13.3
 echo "================= Adding kubectl "$KUBECTL_VERSION" ==================="
 curl -sSLO https://storage.googleapis.com/kubernetes-release/release/"$KUBECTL_VERSION"/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-KOPS_VERSION=1.10.1
+KOPS_VERSION=1.11.0
 echo "Installing KOPS version: $KOPS_VERSION"
 curl -LO https://github.com/kubernetes/kops/releases/download/"$KOPS_VERSION"/kops-linux-amd64
 chmod +x kops-linux-amd64
 mv kops-linux-amd64 /usr/local/bin/kops
 
-HELM_VERSION=v2.12.1
+HELM_VERSION=v2.12.3
 echo "Installing helm version: $HELM_VERSION"
 wget https://storage.googleapis.com/kubernetes-helm/helm-"$HELM_VERSION"-linux-amd64.tar.gz
 tar -zxvf helm-"$HELM_VERSION"-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 rm -rf linux-amd64
 
-echo "================= Adding apache libcloud 2.3.0 ============"
-sudo pip install 'apache-libcloud==2.4.0'
+export APACHE_LIBCLOUD=2.4.0
+echo "================= Adding apache libcloud "$APACHE_LIBCLOUD" ============"
+sudo pip install 'apache-libcloud==$APACHE_LIBCLOUD'
 
-export AWS_VERSION=1.16.81
+export AWS_VERSION=1.16.102
 echo "================= Adding awscli "$AWS_VERSION" ============"
 sudo pip install  awscli=="$AWS_VERSION"
 
-export AWSEBCLI_VERSION=3.14.8
+export AWSEBCLI_VERSION=3.14.11
 echo "================= Adding awscli "$AWSEBCLI_VERSION" ============"
 sudo pip install  awsebcli=="$AWSEBCLI_VERSION"
 
@@ -136,7 +137,7 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install -q apt-transport-https=1.0.1*
 sudo apt-get update && sudo apt-get install -y -q azure-cli=$AZURE_CLI_VERSION
 
-export DOCTL_VERSION=1.12.2
+export DOCTL_VERSION=1.13.0
 echo "================= Adding doctl $DOCTL_VERSION============"
 curl -OL https://github.com/digitalocean/doctl/releases/download/v"$DOCTL_VERSION"/doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
 tar xf doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
@@ -144,13 +145,13 @@ sudo mv doctl /usr/local/bin
 rm doctl-"$DOCTL_VERSION"-linux-amd64.tar.gz
 
 
-export JFROG_VERSION=1.23.1
+export JFROG_VERSION=1.24.1
 echo "================= Adding jfrog-cli "$JFROG_VERSION"==================="
 wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/"$JFROG_VERSION"/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 sudo mv jfrog /usr/bin/jfrog
 
-export ANSIBLE_VERSION=2.7.5
+export ANSIBLE_VERSION=2.7.7
 echo "================ Adding ansible $ANSIBLE_VERSION===================="
 sudo pip install ansible=="$ANSIBLE_VERSION"
 
@@ -158,7 +159,7 @@ export BOTO_VERSION=2.49.0
 echo "================ Adding boto $BOTO_VERSION ======================="
 sudo pip install  boto=="$BOTO_VERSION"
 
-export BOTO3_VERSION=1.9.71
+export BOTO3_VERSION=1.9.92
 echo "============  Adding boto3 "$BOTO_VERSION" ==============="
 sudo pip install boto3=="$BOTO3_VERSION"
 
@@ -186,7 +187,7 @@ mv /tmp/terraform/terraform /usr/bin/terraform
 echo "Added terraform successfully"
 echo "-----------------------------------"
 
-export PK_VERSION=1.3.3
+export PK_VERSION=1.3.4
 echo "================ Adding packer $PK_VERSION ===================="
 export PK_FILE=packer_"$PK_VERSION"_linux_amd64.zip
 

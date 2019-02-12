@@ -15,7 +15,7 @@ curl -sSL https://get.rvm.io | bash -s stable
 source /usr/local/rvm/scripts/rvm
 rvm requirements
 
-export RVM_VERSION=2.6.0
+export RVM_VERSION=2.6.1
 echo "================= Installing default ruby ==================="
 rvm reinstall "$RVM_VERSION" --disable-binary
 
