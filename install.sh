@@ -110,7 +110,7 @@ rm -rf linux-amd64
 
 export APACHE_LIBCLOUD=2.4.0
 echo "================= Adding apache libcloud "$APACHE_LIBCLOUD" ============"
-sudo pip install 'apache-libcloud==$APACHE_LIBCLOUD'
+sudo pip install apache-libcloud=="$APACHE_LIBCLOUD"
 
 export AWS_VERSION=1.16.102
 echo "================= Adding awscli "$AWS_VERSION" ============"
